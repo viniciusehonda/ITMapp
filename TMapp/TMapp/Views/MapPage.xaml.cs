@@ -11,25 +11,40 @@ using Xamarin.Forms.Xaml;
 
 namespace TMapp.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MapPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class MapPage : ContentPage
+    {
+        public Position FStartingCoordinate {get; set;}
+
 		public MapPage (string AEnderecoInicial)
 		{
-			InitializeComponent ();
+			InitializeComponent();
 
 			List<Position> FCoordinates;
 			FCoordinates = FindCoordinates(AEnderecoInicial);
 			Position LPosition = FCoordinates.First();
+            FStartingCoordinate = LPosition;
 			map.MoveToRegion(MapSpan.FromCenterAndRadius(LPosition, Distance.FromMiles(0.2)));
 			
 			//Evento chamado toda vez que o mapa for clicado
 			map.MapClicked += (sender, e) =>
 			{
-				var lat = e.Point.Latitude.ToString("0.000");
+                var LLat = e.Point.Latitude;
+                var LLong = e.Point.Longitude;
+
+                var lat = e.Point.Latitude.ToString("0.000");
 				var lng = e.Point.Longitude.ToString("0.000");
-				this.DisplayAlert("MapClicked", $"{lat}/{lng}", "CLOSE");
-			};
+
+                Pin newPin = new Pin()
+                {
+                    Type = PinType.Place,
+                    Label = "Um lugar qualquer",
+                    Address = AEnderecoInicial,
+                    Position = new Position(LLat, LLong)
+                };
+                map.Pins.Add(newPin);
+                this.DisplayAlert("MapClicked", $"{lat}/{lng}", "CLOSE");
+            };
 		}
 
 		//Metodo devolve as posicoes encontradas,

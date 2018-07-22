@@ -14,7 +14,7 @@
                     </TableSection>
                 </TableRoot>
             </TableView>
-            <Button x:Name="ButtonBuscar" Text="Buscar" VerticalOptions="End" Clicked="ButtonBuscar_Clicked"></Button>
+            <Button x:Name="ButtonBuscar" Text="Buscar" VerticalOptions="Center" Clicked="ButtonBuscar_Clicked"></Button>
         </StackLayout>
     </StackLayout>
 
