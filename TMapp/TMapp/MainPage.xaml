@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TMapp"
+             x:Class="TMapp.MainPage">
+
+    <StackLayout>
+        <StackLayout>
+            <TableView>
+                <TableRoot>
+                    <TableSection>
+                        <EntryCell Label="Rua:" Text="{Binding FRua}"></EntryCell>
+                        <EntryCell Label="Cidade:" Text="{Binding FCidade}"></EntryCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            <Button x:Name="ButtonBuscar" Text="Buscar" VerticalOptions="End" Clicked="ButtonBuscar_Clicked"></Button>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>
