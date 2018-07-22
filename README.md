@@ -1,9 +1,9 @@
 # ITMapp
-A multi-plataform (Android &amp; iOS) app using Xamarin for general "incidents" registrarion on map
+A multi-plataform (Android &amp; iOS) app using Xamarin for general "incidents" registration on map
 
 This is my university "final test". The idea is to develop a app where users can:
 -Register Incidents (Everything that can bring problems to the environment or people)
-Each Incident has
+Each Incident have
  -Category
  -Type
  -Description
