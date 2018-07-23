@@ -24,6 +24,5 @@ Incidents examples:
  -Check for Incidents
  -Evaluete Incidents registered by other users
 
-Xamarin
 Libraries:
 Xamarin.Forms.GoogleMaps: https://github.com/amay077/Xamarin.Forms.GoogleMaps
