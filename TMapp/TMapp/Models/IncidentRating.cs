@@ -11,6 +11,7 @@ namespace TMapp.Models
         public Incident Incident { get; set; }
         public int IdUser { get; set; }
         public User RatingUser { get; set; }
+        public bool VotePositive { get; set; }
 
     }
 }
