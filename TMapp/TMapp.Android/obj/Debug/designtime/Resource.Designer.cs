@@ -4063,9 +4063,6 @@ namespace TMapp.Droid
 			public static int async = 2131492870;
 			
 			// aapt resource value: 1
-			public static int audio_empty_message = 1;
-			
-			// aapt resource value: 1
 			public static int audio_list_view = 1;
 			
 			// aapt resource value: 2131492888
@@ -4366,6 +4363,18 @@ namespace TMapp.Droid
 			public static int left = 2131492925;
 			
 			// aapt resource value: 1
+			public static int license = 1;
+			
+			// aapt resource value: 1
+			public static int license_activity_scrollview = 1;
+			
+			// aapt resource value: 1
+			public static int license_activity_textview = 1;
+			
+			// aapt resource value: 1
+			public static int license_list = 1;
+			
+			// aapt resource value: 1
 			public static int light = 1;
 			
 			// aapt resource value: 2131492878
@@ -4508,6 +4517,9 @@ namespace TMapp.Droid
 			
 			// aapt resource value: 2131492883
 			public static int notification_main_column_container = 2131492883;
+			
+			// aapt resource value: 1
+			public static int no_licenses_text = 1;
 			
 			// aapt resource value: 1
 			public static int omnibox_title_section = 1;
@@ -4751,9 +4763,6 @@ namespace TMapp.Droid
 			
 			// aapt resource value: 1
 			public static int textTitle = 1;
-			
-			// aapt resource value: 1
-			public static int text_empty_message = 1;
 			
 			// aapt resource value: 2131492989
 			public static int text_input_password_toggle = 2131492989;
@@ -5058,6 +5067,18 @@ namespace TMapp.Droid
 			// aapt resource value: 2131689512
 			public static int design_text_input_password_icon = 2131689512;
 			
+			// aapt resource value: 1
+			public static int libraries_social_licenses_license = 1;
+			
+			// aapt resource value: 1
+			public static int libraries_social_licenses_license_activity = 1;
+			
+			// aapt resource value: 1
+			public static int libraries_social_licenses_license_menu_activity = 1;
+			
+			// aapt resource value: 1
+			public static int license_menu_activity_no_licenses = 1;
+			
 			// aapt resource value: 2131689499
 			public static int mr_chooser_dialog = 2131689499;
 			
@@ -5153,6 +5174,9 @@ namespace TMapp.Droid
 			
 			// aapt resource value: 2131689532
 			public static int tooltip = 2131689532;
+			
+			// aapt resource value: 1
+			public static int wallet_test_layout = 1;
 			
 			static Layout()
 			{
@@ -5276,9 +5300,6 @@ namespace TMapp.Droid
 			// aapt resource value: 2132082717
 			public static int abc_toolbar_collapse_description = 2132082717;
 			
-			// aapt resource value: 1
-			public static int accept = 1;
-			
 			// aapt resource value: 2132082718
 			public static int appbar_scrolling_view_behavior = 2132082718;
 			
@@ -5296,6 +5317,9 @@ namespace TMapp.Droid
 			
 			// aapt resource value: 1
 			public static int cast_closed_captions_unavailable = 1;
+			
+			// aapt resource value: 1
+			public static int cast_connecting_to_device = 1;
 			
 			// aapt resource value: 1
 			public static int cast_disconnect = 1;
@@ -5394,12 +5418,6 @@ namespace TMapp.Droid
 			public static int cast_tracks_chooser_dialog_none = 1;
 			
 			// aapt resource value: 1
-			public static int cast_tracks_chooser_dialog_no_audio_tracks = 1;
-			
-			// aapt resource value: 1
-			public static int cast_tracks_chooser_dialog_no_text_tracks = 1;
-			
-			// aapt resource value: 1
 			public static int cast_tracks_chooser_dialog_ok = 1;
 			
 			// aapt resource value: 1
@@ -5463,25 +5481,13 @@ namespace TMapp.Droid
 			public static int common_signin_button_text_long = 1;
 			
 			// aapt resource value: 1
-			public static int create_calendar_message = 1;
+			public static int fcm_fallback_notification_channel_label = 1;
 			
 			// aapt resource value: 1
-			public static int create_calendar_title = 1;
+			public static int gcm_fallback_notification_channel_label = 1;
 			
 			// aapt resource value: 1
-			public static int debug_menu_ad_information = 1;
-			
-			// aapt resource value: 1
-			public static int debug_menu_creative_preview = 1;
-			
-			// aapt resource value: 1
-			public static int debug_menu_title = 1;
-			
-			// aapt resource value: 1
-			public static int debug_menu_troubleshooting = 1;
-			
-			// aapt resource value: 1
-			public static int decline = 1;
+			public static int license_content_error = 1;
 			
 			// aapt resource value: 2132082718
 			public static int mr_button_content_description = 2132082718;
@@ -5546,6 +5552,12 @@ namespace TMapp.Droid
 			// aapt resource value: 2132082738
 			public static int mr_user_route_category_name = 2132082738;
 			
+			// aapt resource value: 1
+			public static int no_licenses_available = 1;
+			
+			// aapt resource value: 1
+			public static int oss_license_title = 1;
+			
 			// aapt resource value: 2132082721
 			public static int password_toggle_content_description = 2132082721;
 			
@@ -5567,17 +5579,32 @@ namespace TMapp.Droid
 			// aapt resource value: 1
 			public static int place_autocomplete_search_hint = 1;
 			
+			// aapt resource value: 1
+			public static int preferences_license_summary = 1;
+			
+			// aapt resource value: 1
+			public static int s1 = 1;
+			
+			// aapt resource value: 1
+			public static int s2 = 1;
+			
+			// aapt resource value: 1
+			public static int s3 = 1;
+			
+			// aapt resource value: 1
+			public static int s4 = 1;
+			
+			// aapt resource value: 1
+			public static int s5 = 1;
+			
+			// aapt resource value: 1
+			public static int s6 = 1;
+			
 			// aapt resource value: 2132082726
 			public static int search_menu_title = 2132082726;
 			
 			// aapt resource value: 2132082689
 			public static int status_bar_notification_info_overflow = 2132082689;
-			
-			// aapt resource value: 1
-			public static int store_picture_message = 1;
-			
-			// aapt resource value: 1
-			public static int store_picture_title = 1;
 			
 			// aapt resource value: 1
 			public static int tagmanager_preview_dialog_button = 1;
