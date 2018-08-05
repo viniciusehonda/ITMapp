@@ -56,21 +56,14 @@ namespace TMapp.Views
             {
                 var LLat = e.Point.Latitude;
                 var LLong = e.Point.Longitude;
+                Position LPos = new Position(e.Point.Longitude, e.Point.Longitude);
+
+
+                AddIncident(LPos);
 
                 var lat = e.Point.Latitude.ToString("0.000");
                 var lng = e.Point.Longitude.ToString("0.000");
 
-                Pin newPin = new Pin()
-                {
-                    Type = PinType.Place,
-                    Label = "Um lugar qualquer",
-                    Address = AEnderecoInicial,
-                    Position = new Position(LLat, LLong)
-                };
-
-                newPin.Tag = NewIncident;
-
-                map.Pins.Add(newPin);
                 this.DisplayAlert("MapClicked", $"{lat}/{lng}", "CLOSE");
             };
 
@@ -78,14 +71,34 @@ namespace TMapp.Views
             {
                 if (e.Pin != null)
                 {
-                    var IncidentModal = new IncidentModal(e.Pin.Tag);
+                    var LIncidentModal = new IncidentModal(e.Pin.Tag);
 
-                    Teste = Navigation.PushModalAsync(IncidentModal);
+                    Teste = Navigation.PushModalAsync(LIncidentModal);
                 }
             };
 
             
-            
+        }
+
+        public void AddIncident(Position LPosXY)
+        {
+            var LIncidentCreation = new IncidentCreation(LPosXY);
+
+            Task LProcess = Navigation.PushModalAsync(LIncidentCreation);
+
+            Incident LNewIncident = LIncidentCreation.CreateIncident();
+
+            Pin newPin = new Pin()
+            {
+                Type = PinType.Place,
+                Label = LNewIncident.Type.Name,
+                Address = LNewIncident.City,
+                Position = new Position(LPosXY.Latitude, LPosXY.Longitude)
+            };
+
+            newPin.Tag = LNewIncident;
+
+            map.Pins.Add(newPin);
         }
 
         //Metodo devolve as posicoes encontradas,

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 using Foundation;
+using TMapp.Data;
 using UIKit;
 using XFGoogleMapSample;
 
@@ -24,8 +26,14 @@ namespace TMapp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            var LDbPath = Path.Combine(Environment.GetFolderPath
+                (Environment.SpecialFolder.MyDocuments), "..", "Library", "Incidents.db");
+
+            var LIncidentRepository = new IncidentRepository(LDbPath);
+
             Xamarin.FormsGoogleMaps.Init(Variables.GOOGLE_MAPS_IOS_API_KEY);
-            LoadApplication(new App());
+            LoadApplication(new App(LIncidentRepository));
 
             return base.FinishedLaunching(app, options);
         }

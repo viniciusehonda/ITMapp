@@ -696,6 +696,16 @@
         "runtime": {
           "lib/netstandard2.0/Xamarin.Forms.GoogleMaps.dll": {}
         }
+      },
+      "TMapp.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/TMapp.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TMapp.Models.dll": {}
+        }
       }
     }
   },
@@ -2899,12 +2909,18 @@
         "xamarin.forms.googlemaps.3.0.1.nupkg.sha512",
         "xamarin.forms.googlemaps.nuspec"
       ]
+    },
+    "TMapp.Models/1.0.0": {
+      "type": "project",
+      "path": "../TMapp.Models/TMapp.Models.csproj",
+      "msbuildProject": "../TMapp.Models/TMapp.Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "Microsoft.EntityFrameworkCore.Sqlite >= 2.1.1",
       "NETStandard.Library >= 2.0.1",
+      "TMapp.Models >= 1.0.0",
       "Xamarin.Forms >= 3.1.0.697729",
       "Xamarin.Forms.GoogleMaps >= 3.0.1"
     ]
@@ -2938,7 +2954,11 @@
       },
       "frameworks": {
         "netstandard2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\honda\\source\\repos\\TMapp\\ITMapp\\TMapp.Models\\TMapp.Models.csproj": {
+              "projectPath": "C:\\Users\\honda\\source\\repos\\TMapp\\ITMapp\\TMapp.Models\\TMapp.Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

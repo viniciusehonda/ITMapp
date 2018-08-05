@@ -1058,6 +1058,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Geocoding.Google": "4.0.1",
+          "TMapp.Models": "1.0.0",
           "TMapp.Standard": "1.0.0",
           "Xamarin.Forms": "3.1.0.697729",
           "Xamarin.Forms.GoogleMaps": "3.0.1"
@@ -1069,11 +1070,22 @@
           "bin/placeholder/TMapp.dll": {}
         }
       },
+      "TMapp.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/TMapp.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TMapp.Models.dll": {}
+        }
+      },
       "TMapp.Standard/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "2.1.1",
+          "TMapp.Models": "1.0.0",
           "Xamarin.Forms": "3.1.0.697729",
           "Xamarin.Forms.GoogleMaps": "3.0.1"
         },
@@ -2078,6 +2090,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Geocoding.Google": "4.0.1",
+          "TMapp.Models": "1.0.0",
           "TMapp.Standard": "1.0.0",
           "Xamarin.Forms": "3.1.0.697729",
           "Xamarin.Forms.GoogleMaps": "3.0.1"
@@ -2089,11 +2102,22 @@
           "bin/placeholder/TMapp.dll": {}
         }
       },
+      "TMapp.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/TMapp.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TMapp.Models.dll": {}
+        }
+      },
       "TMapp.Standard/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "2.1.1",
+          "TMapp.Models": "1.0.0",
           "Xamarin.Forms": "3.1.0.697729",
           "Xamarin.Forms.GoogleMaps": "3.0.1"
         },
@@ -3098,6 +3122,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Geocoding.Google": "4.0.1",
+          "TMapp.Models": "1.0.0",
           "TMapp.Standard": "1.0.0",
           "Xamarin.Forms": "3.1.0.697729",
           "Xamarin.Forms.GoogleMaps": "3.0.1"
@@ -3109,11 +3134,22 @@
           "bin/placeholder/TMapp.dll": {}
         }
       },
+      "TMapp.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/TMapp.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TMapp.Models.dll": {}
+        }
+      },
       "TMapp.Standard/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "2.1.1",
+          "TMapp.Models": "1.0.0",
           "Xamarin.Forms": "3.1.0.697729",
           "Xamarin.Forms.GoogleMaps": "3.0.1"
         },
@@ -4118,6 +4154,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Geocoding.Google": "4.0.1",
+          "TMapp.Models": "1.0.0",
           "TMapp.Standard": "1.0.0",
           "Xamarin.Forms": "3.1.0.697729",
           "Xamarin.Forms.GoogleMaps": "3.0.1"
@@ -4129,11 +4166,22 @@
           "bin/placeholder/TMapp.dll": {}
         }
       },
+      "TMapp.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/TMapp.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TMapp.Models.dll": {}
+        }
+      },
       "TMapp.Standard/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "2.1.1",
+          "TMapp.Models": "1.0.0",
           "Xamarin.Forms": "3.1.0.697729",
           "Xamarin.Forms.GoogleMaps": "3.0.1"
         },
@@ -7552,6 +7600,11 @@
       "type": "project",
       "path": "../TMapp/TMapp.csproj",
       "msbuildProject": "../TMapp/TMapp.csproj"
+    },
+    "TMapp.Models/1.0.0": {
+      "type": "project",
+      "path": "../../TMapp.Models/TMapp.Models.csproj",
+      "msbuildProject": "../../TMapp.Models/TMapp.Models.csproj"
     },
     "TMapp.Standard/1.0.0": {
       "type": "project",

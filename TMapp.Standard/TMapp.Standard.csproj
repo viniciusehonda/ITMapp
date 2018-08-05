@@ -10,4 +10,8 @@
     <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TMapp.Models\TMapp.Models.csproj" />
+  </ItemGroup>
+
 </Project>
