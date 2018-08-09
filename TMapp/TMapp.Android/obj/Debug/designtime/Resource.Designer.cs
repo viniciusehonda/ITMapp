@@ -340,8 +340,8 @@ namespace TMapp.Droid
 			// aapt resource value: 2130968647
 			public static int buttonPanelSideLayout = 2130968647;
 			
-			// aapt resource value: 1
-			public static int buttonSize = 1;
+			// aapt resource value: 0
+			public static int buttonSize = 0;
 			
 			// aapt resource value: 2130968648
 			public static int buttonStyle = 2130968648;
@@ -502,8 +502,8 @@ namespace TMapp.Droid
 			// aapt resource value: 2130968653
 			public static int checkedTextViewStyle = 2130968653;
 			
-			// aapt resource value: 1
-			public static int circleCrop = 1;
+			// aapt resource value: 0
+			public static int circleCrop = 0;
 			
 			// aapt resource value: 2130968654
 			public static int closeIcon = 2130968654;
@@ -553,8 +553,8 @@ namespace TMapp.Droid
 			// aapt resource value: 2130968669
 			public static int colorPrimaryDark = 2130968669;
 			
-			// aapt resource value: 1
-			public static int colorScheme = 1;
+			// aapt resource value: 0
+			public static int colorScheme = 0;
 			
 			// aapt resource value: 2130968670
 			public static int colorSwitchThumbNormal = 2130968670;
@@ -829,11 +829,11 @@ namespace TMapp.Droid
 			// aapt resource value: 2130968742
 			public static int iconTintMode = 2130968742;
 			
-			// aapt resource value: 1
-			public static int imageAspectRatio = 1;
+			// aapt resource value: 0
+			public static int imageAspectRatio = 0;
 			
-			// aapt resource value: 1
-			public static int imageAspectRatioAdjust = 1;
+			// aapt resource value: 0
+			public static int imageAspectRatioAdjust = 0;
 			
 			// aapt resource value: 2130968744
 			public static int imageButtonStyle = 2130968744;
@@ -1156,8 +1156,8 @@ namespace TMapp.Droid
 			// aapt resource value: 1
 			public static int schemaOrgType = 1;
 			
-			// aapt resource value: 1
-			public static int scopeUris = 1;
+			// aapt resource value: 0
+			public static int scopeUris = 0;
 			
 			// aapt resource value: 2130968817
 			public static int scrimAnimationDuration = 2130968817;
@@ -1767,38 +1767,38 @@ namespace TMapp.Droid
 			// aapt resource value: 0
 			public static int colorPrimaryDark = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_text_dark = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_text_dark = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_text_dark_default = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_text_dark_default = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_text_dark_disabled = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_text_dark_disabled = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_text_dark_focused = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_text_dark_focused = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_text_dark_pressed = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_text_dark_pressed = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_text_light = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_text_light = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_text_light_default = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_text_light_default = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_text_light_disabled = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_text_light_disabled = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_text_light_focused = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_text_light_focused = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_text_light_pressed = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_text_light_pressed = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_tint = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_tint = 0;
 			
 			// aapt resource value: 2131099687
 			public static int design_bottom_navigation_shadow_color = 2131099687;
@@ -3083,62 +3083,62 @@ namespace TMapp.Droid
 			// aapt resource value: 1
 			public static int cast_skip_ad_label_border = 1;
 			
-			// aapt resource value: 1
-			public static int common_full_open_on_phone = 1;
+			// aapt resource value: 0
+			public static int common_full_open_on_phone = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_icon_dark = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_icon_dark = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_icon_dark_focused = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_icon_dark_focused = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_icon_dark_normal = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_icon_dark_normal = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_icon_dark_normal_background = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_icon_dark_normal_background = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_icon_disabled = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_icon_disabled = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_icon_light = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_icon_light = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_icon_light_focused = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_icon_light_focused = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_icon_light_normal = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_icon_light_normal = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_icon_light_normal_background = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_icon_light_normal_background = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_text_dark = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_text_dark = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_text_dark_focused = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_text_dark_focused = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_text_dark_normal = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_text_dark_normal = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_text_dark_normal_background = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_text_dark_normal_background = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_text_disabled = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_text_disabled = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_text_light = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_text_light = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_text_light_focused = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_text_light_focused = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_text_light_normal = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_text_light_normal = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_signin_btn_text_light_normal_background = 1;
+			// aapt resource value: 0
+			public static int common_google_signin_btn_text_light_normal_background = 0;
 			
 			// aapt resource value: 2131296342
 			public static int design_bottom_navigation_item_background = 2131296342;
@@ -3158,11 +3158,11 @@ namespace TMapp.Droid
 			// aapt resource value: 2131296347
 			public static int design_snackbar_background = 2131296347;
 			
-			// aapt resource value: 1
-			public static int googleg_disabled_color_18 = 1;
+			// aapt resource value: 0
+			public static int googleg_disabled_color_18 = 0;
 			
-			// aapt resource value: 1
-			public static int googleg_standard_color_18 = 1;
+			// aapt resource value: 0
+			public static int googleg_standard_color_18 = 0;
 			
 			// aapt resource value: 2131296340
 			public static int ic_audiotrack_dark = 2131296340;
@@ -4023,11 +4023,11 @@ namespace TMapp.Droid
 			// aapt resource value: 2131492885
 			public static int add = 2131492885;
 			
-			// aapt resource value: 1
-			public static int adjust_height = 1;
+			// aapt resource value: 0
+			public static int adjust_height = 0;
 			
-			// aapt resource value: 1
-			public static int adjust_width = 1;
+			// aapt resource value: 0
+			public static int adjust_width = 0;
 			
 			// aapt resource value: 1
 			public static int ad_container = 1;
@@ -4203,8 +4203,8 @@ namespace TMapp.Droid
 			// aapt resource value: 2131492900
 			public static int customPanel = 2131492900;
 			
-			// aapt resource value: 1
-			public static int dark = 1;
+			// aapt resource value: 0
+			public static int dark = 0;
 			
 			// aapt resource value: 1
 			public static int date = 1;
@@ -4311,8 +4311,8 @@ namespace TMapp.Droid
 			// aapt resource value: 2131492875
 			public static int icon_group = 2131492875;
 			
-			// aapt resource value: 1
-			public static int icon_only = 1;
+			// aapt resource value: 0
+			public static int icon_only = 0;
 			
 			// aapt resource value: 1
 			public static int icon_uri = 1;
@@ -4374,8 +4374,8 @@ namespace TMapp.Droid
 			// aapt resource value: 1
 			public static int license_list = 1;
 			
-			// aapt resource value: 1
-			public static int light = 1;
+			// aapt resource value: 0
+			public static int light = 0;
 			
 			// aapt resource value: 2131492878
 			public static int line1 = 2131492878;
@@ -4698,8 +4698,8 @@ namespace TMapp.Droid
 			// aapt resource value: 2131492978
 			public static int src_over = 2131492978;
 			
-			// aapt resource value: 1
-			public static int standard = 1;
+			// aapt resource value: 0
+			public static int standard = 0;
 			
 			// aapt resource value: 2131492979
 			public static int start = 2131492979;
@@ -4833,8 +4833,8 @@ namespace TMapp.Droid
 			// aapt resource value: 2131492989
 			public static int volume_item_container = 2131492989;
 			
-			// aapt resource value: 1
-			public static int wide = 1;
+			// aapt resource value: 0
+			public static int wide = 0;
 			
 			// aapt resource value: 2131493008
 			public static int wrap_content = 2131493008;
@@ -5429,56 +5429,56 @@ namespace TMapp.Droid
 			// aapt resource value: 2132082720
 			public static int character_counter_pattern = 2132082720;
 			
-			// aapt resource value: 1
-			public static int common_google_play_services_enable_button = 1;
+			// aapt resource value: 0
+			public static int common_google_play_services_enable_button = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_play_services_enable_text = 1;
+			// aapt resource value: 0
+			public static int common_google_play_services_enable_text = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_play_services_enable_title = 1;
+			// aapt resource value: 0
+			public static int common_google_play_services_enable_title = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_play_services_install_button = 1;
+			// aapt resource value: 0
+			public static int common_google_play_services_install_button = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_play_services_install_text = 1;
+			// aapt resource value: 0
+			public static int common_google_play_services_install_text = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_play_services_install_title = 1;
+			// aapt resource value: 0
+			public static int common_google_play_services_install_title = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_play_services_notification_ticker = 1;
+			// aapt resource value: 0
+			public static int common_google_play_services_notification_ticker = 0;
 			
 			// aapt resource value: 1
 			public static int common_google_play_services_unknown_issue = 1;
 			
-			// aapt resource value: 1
-			public static int common_google_play_services_unsupported_text = 1;
+			// aapt resource value: 0
+			public static int common_google_play_services_unsupported_text = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_play_services_update_button = 1;
+			// aapt resource value: 0
+			public static int common_google_play_services_update_button = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_play_services_update_text = 1;
+			// aapt resource value: 0
+			public static int common_google_play_services_update_text = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_play_services_update_title = 1;
+			// aapt resource value: 0
+			public static int common_google_play_services_update_title = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_play_services_updating_text = 1;
+			// aapt resource value: 0
+			public static int common_google_play_services_updating_text = 0;
 			
-			// aapt resource value: 1
-			public static int common_google_play_services_wear_update_text = 1;
+			// aapt resource value: 0
+			public static int common_google_play_services_wear_update_text = 0;
 			
-			// aapt resource value: 1
-			public static int common_open_on_phone = 1;
+			// aapt resource value: 0
+			public static int common_open_on_phone = 0;
 			
-			// aapt resource value: 1
-			public static int common_signin_button_text = 1;
+			// aapt resource value: 0
+			public static int common_signin_button_text = 0;
 			
-			// aapt resource value: 1
-			public static int common_signin_button_text_long = 1;
+			// aapt resource value: 0
+			public static int common_signin_button_text_long = 0;
 			
 			// aapt resource value: 1
 			public static int fcm_fallback_notification_channel_label = 1;
@@ -8483,15 +8483,15 @@ namespace TMapp.Droid
 			public static int ListPopupWindow_android_dropDownVerticalOffset = 1;
 			
 			public static int[] LoadingImageView = new int[] {
-					1,
-					1,
-					1};
+					0,
+					0,
+					0};
 			
-			// aapt resource value: 2
-			public static int LoadingImageView_circleCrop = 2;
+			// aapt resource value: 0
+			public static int LoadingImageView_circleCrop = 0;
 			
-			// aapt resource value: 1
-			public static int LoadingImageView_imageAspectRatio = 1;
+			// aapt resource value: 0
+			public static int LoadingImageView_imageAspectRatio = 0;
 			
 			// aapt resource value: 0
 			public static int LoadingImageView_imageAspectRatioAdjust = 0;
@@ -9003,18 +9003,18 @@ namespace TMapp.Droid
 			public static int Section_subsectionSeparator = 5;
 			
 			public static int[] SignInButton = new int[] {
-					1,
-					1,
-					1};
+					0,
+					0,
+					0};
 			
 			// aapt resource value: 0
 			public static int SignInButton_buttonSize = 0;
 			
-			// aapt resource value: 1
-			public static int SignInButton_colorScheme = 1;
+			// aapt resource value: 0
+			public static int SignInButton_colorScheme = 0;
 			
-			// aapt resource value: 2
-			public static int SignInButton_scopeUris = 2;
+			// aapt resource value: 0
+			public static int SignInButton_scopeUris = 0;
 			
 			public static int[] SnackbarLayout = new int[] {
 					16843039,
