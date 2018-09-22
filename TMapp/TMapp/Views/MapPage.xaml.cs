@@ -1,7 +1,9 @@
 ﻿using Geocoding.Google;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using TMapp.Models;
@@ -27,29 +29,33 @@ namespace TMapp.Views
             FStartingCoordinate = LPosition;
             map.MoveToRegion(MapSpan.FromCenterAndRadius(LPosition, Distance.FromMiles(0.2)));
 
-            User NewUser = new User();
-            NewUser.IdUser = 1;
-            NewUser.Name = "Vinicius";
-            NewUser.City = "Sorocaba";
+           //var LReqIncidents = GetIncidentsAsync();
+           // ICollection<Incident> LIncidents = LReqIncidents.Result;
 
-            IncidentType NewIncidentType = new IncidentType();
-            NewIncidentType.IdType = 1;
-            NewIncidentType.Category = IncidentCategory.Traffic;
-            NewIncidentType.Name = "Transito";
+           // foreach(var item in LIncidents)
+           // {
+           // }
+           // User NewUser = new User();
+           // NewUser.IdUser = 1;
+           // NewUser.Name = "Vinicius";
+           // NewUser.City = "Sorocaba";
 
-            Incident NewIncident = new Incident();
-            NewIncident.IdIncident = 1;
-            NewIncident.Type = NewIncidentType;
-            NewIncident.UserAuthor = NewUser;
+           // IncidentType NewIncidentType = new IncidentType();
+           // NewIncidentType.IdType = 1;
+           // NewIncidentType.TypeName = "Transito";
 
-            IncidentRating NewIncidentRating = new IncidentRating();
-            NewIncidentRating.IdIncident = 1;
-            NewIncidentRating.Incident = NewIncident;
-            NewIncidentRating.RatingUser = NewUser;
-            NewIncidentRating.VotePositive = true;
+           // Incident NewIncident = new Incident();
+           // NewIncident.IdIncident = 1;
+           // NewIncident.UserAuthor = NewUser;
+
+           // IncidentRating NewIncidentRating = new IncidentRating();
+           // NewIncidentRating.IdIncident = 1;
+           // NewIncidentRating.Incident = NewIncident;
+           // NewIncidentRating.RatingUser = NewUser;
+           // NewIncidentRating.PositiveVote = true;
 
             //NewIncident.Rating.Add(NewIncidentRating);
-            NewIncident.Description = "Aconteceu algo por aqui que eu nao sei explicar!";
+            //NewIncident.Description = "Aconteceu algo por aqui que eu nao sei explicar!";
 
             //Evento chamado toda vez que o mapa for clicado
             map.MapClicked += (sender, e) =>
@@ -58,8 +64,13 @@ namespace TMapp.Views
                 var LLong = e.Point.Longitude;
                 Position LPos = new Position(e.Point.Longitude, e.Point.Longitude);
 
+                //AddIncident(LPos);
 
-                AddIncident(LPos);
+                var LIncidentCreation = new IncidentCreation(LPos);
+
+                //var form = new NavigationPage(new IncidentCreation(LPos));
+                Task LProcess = Navigation.PushAsync(LIncidentCreation);
+                LProcess.Wait();
 
                 var lat = e.Point.Latitude.ToString("0.000");
                 var lng = e.Point.Longitude.ToString("0.000");
@@ -85,36 +96,57 @@ namespace TMapp.Views
             var LIncidentCreation = new IncidentCreation(LPosXY);
 
             Task LProcess = Navigation.PushModalAsync(LIncidentCreation);
+            //Incident LNewIncident = LIncidentCreation.CreateIncident();
 
-            Incident LNewIncident = LIncidentCreation.CreateIncident();
+            //Pin newPin = new Pin()
+            //{
+            //    Type = PinType.Place,
+            //    //Label = LNewIncident.Type.TypeName,
+            //    Address = LNewIncident.City,
+            //    Position = new Position(LPosXY.Latitude, LPosXY.Longitude)
+            //};
 
-            Pin newPin = new Pin()
+            //newPin.Tag = LNewIncident;
+
+            //map.Pins.Add(newPin);
+        }
+
+        HttpClient FCliente = new HttpClient();
+        public async Task<ICollection<Incident>> GetIncidentsAsync()
+        {
+            try
             {
-                Type = PinType.Place,
-                Label = LNewIncident.Type.Name,
-                Address = LNewIncident.City,
-                Position = new Position(LPosXY.Latitude, LPosXY.Longitude)
-            };
-
-            newPin.Tag = LNewIncident;
-
-            map.Pins.Add(newPin);
+                string url = "http://localhost:65029/api/Incident/";
+                var response = await FCliente.GetStringAsync(url);
+                var Incidents = JsonConvert.DeserializeObject<ICollection<Incident>>(response);
+                return Incidents;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         //Metodo devolve as posicoes encontradas,
         //utilizando como argumento uma string com  o endereco
         public List<Position> FindCoordinates(string AEndereco)
         {
+            AEndereco = "Sorocaba, State of São Paulo, Brazil";
             List<Position> LResults = new List<Position>();
-            Position LPosition;
-            GoogleGeocoder LGeocoder = new GoogleGeocoder();
-            Task<IEnumerable<GoogleAddress>> LPesquisa = LGeocoder.GeocodeAsync(AEndereco);
-            LPesquisa.Wait();
-            foreach (GoogleAddress Endereco in LPesquisa.Result)
-            {
-                LPosition = new Position(Endereco.Coordinates.Latitude, Endereco.Coordinates.Longitude);
-                LResults.Add(LPosition);
-            }
+            Position LPosition = new Position(-23.5015299, -47.45256029999996);
+            //GoogleGeocoder LGeocoder = new GoogleGeocoder();
+            //LGeocoder.ApiKey = "AIzaSyDt42XuK3ltzmuy01R0jnj3H3br4e2ieZQ";
+
+            //Task<IEnumerable<GoogleAddress>> LPesquisa = LGeocoder.GeocodeAsync(AEndereco);
+            //LPesquisa.Wait();
+            //var teste = LPesquisa.Result;
+            //foreach (GoogleAddress Endereco in LPesquisa.Result)
+            //{
+            //  LPosition = new Position(Endereco.Coordinates.Latitude, Endereco.Coordinates.Longitude);
+            //LResults.Add(LPosition);
+            //}
+            LResults.Add(LPosition);
+
             return LResults;
         }
     }

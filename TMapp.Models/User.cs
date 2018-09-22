@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security;
 using System.Text;
 
 namespace TMapp.Models
@@ -13,5 +14,7 @@ namespace TMapp.Models
         public string Country { get; set; }
         public string State { get; set; }
         public string City { get; set; }
+        public ICollection<Incident> Incidents { get; set; }
+        public ICollection<IncidentRating> Ratings { get; set; }
     }
 }

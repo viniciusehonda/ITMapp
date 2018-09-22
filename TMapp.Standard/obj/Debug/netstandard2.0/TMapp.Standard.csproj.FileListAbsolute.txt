@@ -1,0 +1,4 @@
+C:\Users\honda_qgx8ii8\source\repos\ITMapp\TMapp.Standard\obj\Debug\netstandard2.0\TMapp.Standard.csprojAssemblyReference.cache
+C:\Users\honda_qgx8ii8\source\repos\ITMapp\TMapp.Standard\obj\Debug\netstandard2.0\TMapp.Standard.csproj.CoreCompileInputs.cache
+C:\Users\honda_qgx8ii8\source\repos\ITMapp\TMapp.Standard\obj\Debug\netstandard2.0\TMapp.Standard.AssemblyInfoInputs.cache
+C:\Users\honda_qgx8ii8\source\repos\ITMapp\TMapp.Standard\obj\Debug\netstandard2.0\TMapp.Standard.AssemblyInfo.cs

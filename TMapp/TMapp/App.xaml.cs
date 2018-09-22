@@ -1,5 +1,5 @@
 using System;
-using TMapp.Data.Data.Interfaces;
+using TMapp.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,11 +8,11 @@ namespace TMapp
 {
 	public partial class App : Application
 	{
-		public App (IIncidentRepository AIncidentRepository)
+		public App ()
 		{
 			InitializeComponent();
 
-			MainPage = new NavigationPage(new MainPage());
+			MainPage = new NavigationPage(new MapPage(""));
 		}
 
 		protected override void OnStart ()
