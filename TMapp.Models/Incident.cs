@@ -14,7 +14,7 @@ namespace TMapp.Models
         public User UserAuthor { get; set; }
         public ICollection<IncidentRating> Ratings { get; set; }
         public string Description { get; set; }
-        public DateTime DataHora { get; set; }
+        public DateTime? DataHora { get; set; }
         public string Country { get; set; }
         public string State { get; set; }
         public string City { get; set; }

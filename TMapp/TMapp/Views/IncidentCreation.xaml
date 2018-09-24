@@ -15,11 +15,9 @@
                 </Picker.Items>
             </Picker>
             <Picker x:Name="pckType" HorizontalOptions="FillAndExpand" Title="Seleciona a categoria:"
-                    IsVisible="False">
-                <Picker.Items>
-                </Picker.Items>
+                    SelectedIndexChanged="pckType_SelectedIndexChanged">
             </Picker>
-            <Entry  Text="{Binding FDescription}"></Entry>
+            <Entry Text="{Binding FDescription}"></Entry>
             <DatePicker x:Name="dtpDateHour" MinimumDate="01/01/2018"
             MaximumDate="{Binding FDatMax}"
             Date="{Binding FDataHora}" />

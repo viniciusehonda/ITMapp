@@ -56,6 +56,9 @@ namespace TMapp.Views
             InitializeComponent();
             BindingContext = this;
 
+            LPosX = APosXY.Latitude;
+            LPosY = APosXY.Longitude;
+
             async Task<ICollection<IncidentCategory>> GetCategoriesAsync()
             {
                 try
@@ -173,8 +176,8 @@ namespace TMapp.Views
 
             LEnumSelectedCategory = SetCategory();
 
-            pckType = new Picker();
-            pckType.IsVisible = true;
+            //pckType = new Picker();
+            //pckType.IsVisible = true;
 
             List<string> LPickerOptions = GetPickerOptions();
 
@@ -246,34 +249,60 @@ namespace TMapp.Views
             LIncident.IdCategory = FCurrentCategory.IdCategory;
             LIncident.Category = FCurrentCategory;
 
+
+            async Task<ICollection<User>> GetUserAsync()
+            {
+                try
+                {
+                    string url = "https://tmappwebapi20180922043720.azurewebsites.net/api/User";
+                    var response = FCliente.GetStringAsync(url);
+                    response.Wait();
+                    var res = response.Result;
+                    var LResCategories = JsonConvert.DeserializeObject<ICollection<User>>(res);
+                    return LResCategories;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            var LTask = GetUserAsync();
+            LTask.Wait();
+
+            LAuthor = LTask.Result.FirstOrDefault();
+
+
+            LIncident.IdUser = LAuthor.IdUser;
             LIncident.UserAuthor = LAuthor;
 
             LIncident.Description = FDescription;
             FDataHora.Date.Add(new TimeSpan(FHour.Hour, FHour.Minute, FHour.Second));
             LIncident.DataHora = FDataHora;
 
-            LIncident.Country = LCountry;
-            LIncident.State = LState;
-            LIncident.City = LCity;
+            LIncident.Country = LAuthor.Country;
+            LIncident.State = LAuthor.State;
+            LIncident.City = LAuthor.City;
             LIncident.PosX = LPosX;
             LIncident.PosY = LPosY;
             // async Task<ICollection<IncidentCategory>> IncidentForm()
             // {
             try
             {
-                string url = "http://localhost:65029/api/Incident/";
+                string url = "https://tmappwebapi20180922043720.azurewebsites.net/api/Incident";
                 var json = JsonConvert.SerializeObject(LIncident);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
                 var result = FCliente.PostAsync(url, content);
 
                 result.Wait();
-                var final = result.Result.EnsureSuccessStatusCode();
+                //var final = result.Result.EnsureSuccessStatusCode();
             }
             catch (Exception ex)
             {
                 throw ex;
 
             }
+            return;
             // }
         }
     }

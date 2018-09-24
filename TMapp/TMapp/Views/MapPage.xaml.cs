@@ -29,53 +29,48 @@ namespace TMapp.Views
             FStartingCoordinate = LPosition;
             map.MoveToRegion(MapSpan.FromCenterAndRadius(LPosition, Distance.FromMiles(0.2)));
 
-           //var LReqIncidents = GetIncidentsAsync();
-           // ICollection<Incident> LIncidents = LReqIncidents.Result;
+            // ICollection<Incident> LIncidents = LReqIncidents.Result;
 
-           // foreach(var item in LIncidents)
-           // {
-           // }
-           // User NewUser = new User();
-           // NewUser.IdUser = 1;
-           // NewUser.Name = "Vinicius";
-           // NewUser.City = "Sorocaba";
+            // foreach(var item in LIncidents)
+            // {
+            // }
+            // User NewUser = new User();
+            // NewUser.IdUser = 1;
+            // NewUser.Name = "Vinicius";
+            // NewUser.City = "Sorocaba";
 
-           // IncidentType NewIncidentType = new IncidentType();
-           // NewIncidentType.IdType = 1;
-           // NewIncidentType.TypeName = "Transito";
+            // IncidentType NewIncidentType = new IncidentType();
+            // NewIncidentType.IdType = 1;
+            // NewIncidentType.TypeName = "Transito";
 
-           // Incident NewIncident = new Incident();
-           // NewIncident.IdIncident = 1;
-           // NewIncident.UserAuthor = NewUser;
+            // Incident NewIncident = new Incident();
+            // NewIncident.IdIncident = 1;
+            // NewIncident.UserAuthor = NewUser;
 
-           // IncidentRating NewIncidentRating = new IncidentRating();
-           // NewIncidentRating.IdIncident = 1;
-           // NewIncidentRating.Incident = NewIncident;
-           // NewIncidentRating.RatingUser = NewUser;
-           // NewIncidentRating.PositiveVote = true;
+            // IncidentRating NewIncidentRating = new IncidentRating();
+            // NewIncidentRating.IdIncident = 1;
+            // NewIncidentRating.Incident = NewIncident;
+            // NewIncidentRating.RatingUser = NewUser;
+            // NewIncidentRating.PositiveVote = true;
 
             //NewIncident.Rating.Add(NewIncidentRating);
             //NewIncident.Description = "Aconteceu algo por aqui que eu nao sei explicar!";
+
+            LoadIncidents();
 
             //Evento chamado toda vez que o mapa for clicado
             map.MapClicked += (sender, e) =>
             {
                 var LLat = e.Point.Latitude;
                 var LLong = e.Point.Longitude;
-                Position LPos = new Position(e.Point.Longitude, e.Point.Longitude);
+                Position LPos = new Position(e.Point.Latitude, e.Point.Longitude);
 
-                //AddIncident(LPos);
+                AddIncident(LPos);
 
-                var LIncidentCreation = new IncidentCreation(LPos);
+                //var lat = e.Point.Latitude.ToString("0.000");
+                //var lng = e.Point.Longitude.ToString("0.000");
 
-                //var form = new NavigationPage(new IncidentCreation(LPos));
-                Task LProcess = Navigation.PushAsync(LIncidentCreation);
-                LProcess.Wait();
-
-                var lat = e.Point.Latitude.ToString("0.000");
-                var lng = e.Point.Longitude.ToString("0.000");
-
-                this.DisplayAlert("MapClicked", $"{lat}/{lng}", "CLOSE");
+                //this.DisplayAlert("MapClicked", $"{lat}/{lng}", "CLOSE");
             };
 
             map.PinClicked += (sender, e) =>
@@ -91,11 +86,34 @@ namespace TMapp.Views
             
         }
 
+        public void LoadIncidents()
+        {
+            var LReqIncidents = GetIncidentsAsync();
+            LReqIncidents.Wait();
+            var LIncidents = LReqIncidents.Result;
+
+            foreach(var Incident in LIncidents)
+            {
+                Pin newPin = new Pin()
+                {
+                    Type = PinType.Place,
+                    Label = Incident.Description,
+                    Address = Incident.City,
+                    Position = new Position(Incident.PosX, Incident.PosY)
+                };
+
+                newPin.Tag = Incident;
+
+                map.Pins.Add(newPin);
+            }
+        }
+
         public void AddIncident(Position LPosXY)
         {
             var LIncidentCreation = new IncidentCreation(LPosXY);
 
             Task LProcess = Navigation.PushModalAsync(LIncidentCreation);
+
             //Incident LNewIncident = LIncidentCreation.CreateIncident();
 
             //Pin newPin = new Pin()
@@ -116,9 +134,11 @@ namespace TMapp.Views
         {
             try
             {
-                string url = "http://localhost:65029/api/Incident/";
-                var response = await FCliente.GetStringAsync(url);
-                var Incidents = JsonConvert.DeserializeObject<ICollection<Incident>>(response);
+                string url = "https://tmappwebapi20180922043720.azurewebsites.net/api/Incident/";
+                var response = FCliente.GetStringAsync(url);
+                response.Wait();
+                var res = response.Result;
+                var Incidents = JsonConvert.DeserializeObject<ICollection<Incident>>(res);
                 return Incidents;
             }
             catch (Exception ex)
