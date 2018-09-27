@@ -4257,6 +4257,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://nuget.syncfusion.com/nuget_xamarin/nuget/getsyncfusionpackages/xamarin": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

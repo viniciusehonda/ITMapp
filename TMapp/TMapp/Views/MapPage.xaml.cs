@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -86,6 +87,67 @@ namespace TMapp.Views
             
         }
 
+        public BitmapDescriptor PinImageDispatcher(int LIncidentType)
+        {
+            if(LIncidentType >= 0 && LIncidentType <= 2)
+            {
+                if (Device.RuntimePlatform.Equals(Device.iOS))
+                {
+                    return BitmapDescriptorFactory.FromBundle("ViolencePin");
+                }
+                else if (Device.RuntimePlatform.Equals(Device.Android))
+                {
+                    return BitmapDescriptorFactory.FromBundle("ViolencePin.png");
+                }
+            }
+            else if(LIncidentType == 3)
+            {
+                if (Device.RuntimePlatform.Equals(Device.iOS))
+                {
+                    return BitmapDescriptorFactory.FromBundle("DisasterPin");
+                }
+                else if (Device.RuntimePlatform.Equals(Device.Android))
+                {
+                    return BitmapDescriptorFactory.FromBundle("DisasterPinBlue.png");
+                }
+            }
+            else if(LIncidentType >= 4 && LIncidentType <= 5)
+            {
+                if (Device.RuntimePlatform.Equals(Device.iOS))
+                {
+                    return BitmapDescriptorFactory.FromBundle("EventPin");
+                }
+                else if (Device.RuntimePlatform.Equals(Device.Android))
+                {
+                    return BitmapDescriptorFactory.FromBundle("EventPin.png");
+                }
+            }
+            else if(LIncidentType >= 6 && LIncidentType <= 7)
+            {
+                if (Device.RuntimePlatform.Equals(Device.iOS))
+                {
+                    return BitmapDescriptorFactory.FromBundle("TrafficPin");
+                }
+                else if (Device.RuntimePlatform.Equals(Device.Android))
+                {
+                    return BitmapDescriptorFactory.FromBundle("TrafficPin.png");
+                }
+            }
+            else if(LIncidentType >= 8 && LIncidentType <= 9)
+            {
+                if (Device.RuntimePlatform.Equals(Device.iOS))
+                {
+                    return BitmapDescriptorFactory.FromBundle("EnvironmentPin");
+                }
+                else if (Device.RuntimePlatform.Equals(Device.Android))
+                {
+                    return BitmapDescriptorFactory.FromBundle("EnvironmentPin.png");
+                }
+            }
+                return BitmapDescriptorFactory.DefaultMarker(Color.White);
+            
+        }
+
         public void LoadIncidents()
         {
             var LReqIncidents = GetIncidentsAsync();
@@ -94,11 +156,20 @@ namespace TMapp.Views
 
             foreach(var Incident in LIncidents)
             {
+                //BitmapDescriptor LPin = BitmapDescriptorFactory.DefaultMarker(Color.White);
+
+                //LPin = PinImageDispatcher((int)Incident.Category.IncidentType);
+
+                var LCategory = GetCategoryById(Incident.IdCategory);
+                LCategory.Wait();
+                Incident.Category = LCategory.Result;
+
                 Pin newPin = new Pin()
                 {
                     Type = PinType.Place,
                     Label = Incident.Description,
                     Address = Incident.City,
+                    Icon = PinImageDispatcher((int)Incident.Category.IncidentType),
                     Position = new Position(Incident.PosX, Incident.PosY)
                 };
 
@@ -140,6 +211,23 @@ namespace TMapp.Views
                 var res = response.Result;
                 var Incidents = JsonConvert.DeserializeObject<ICollection<Incident>>(res);
                 return Incidents;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<IncidentCategory> GetCategoryById(int LId)
+        {
+            try
+            {
+                string url = "https://tmappwebapi20180922043720.azurewebsites.net/api/Category/" + LId.ToString();
+                var response = FCliente.GetStringAsync(url);
+                response.Wait();
+                var res = response.Result;
+                var Categories = JsonConvert.DeserializeObject<IncidentCategory>(res);
+                return Categories;
             }
             catch (Exception ex)
             {
