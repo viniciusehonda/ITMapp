@@ -13,20 +13,25 @@ namespace TMapp.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class IncidentModal : ContentPage
 	{
+        public Incident LIncident { get; set; }
         public string LLabel { get; set; }
+        public string VlblTipo { get; set; }
+        public string VlblDescricao { get; set; }
 
 		public IncidentModal(Object APin)
 		{
-            if (APin != null)
-            {
-                var LPin = (Incident)APin;
-                LLabel = LPin.Description;
-            }
 
             InitializeComponent();
 
-            xLabel.Text = LLabel;
+            if (APin != null)
+            {
+                LIncident = (Incident)APin;
+                xLblTipo.Text = LIncident.Category.CategoryName;
+                xLblDescricao.Text = LIncident.Description;
+                xLblData.Text = LIncident.DataHora.Value.Date.ToString("dd/MM/yyyy");
+                xLblHora.Text = LIncident.DataHora.Value.TimeOfDay.ToString();
+            }
 
-		}
+        }
 	}
 }

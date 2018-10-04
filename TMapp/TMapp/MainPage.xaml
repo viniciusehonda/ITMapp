@@ -9,12 +9,12 @@
             <TableView>
                 <TableRoot>
                     <TableSection>
-                        <EntryCell Label="Rua:" Text="{Binding FRua}"></EntryCell>
-                        <EntryCell Label="Cidade:" Text="{Binding FCidade}"></EntryCell>
+                        <!--<EntryCell Label="Rua:" Text="{Binding FRua}"></EntryCell>
+                        <EntryCell Label="Cidade:" Text="{Binding FCidade}"></EntryCell>-->
                     </TableSection>
                 </TableRoot>
             </TableView>
-            <Button x:Name="ButtonBuscar" Text="Buscar" VerticalOptions="Center" Clicked="ButtonBuscar_Clicked"></Button>
+            <Button x:Name="ButtonBuscar" Text="Abrir Mapa" VerticalOptions="Center" Clicked="ButtonBuscar_Clicked"></Button>
         </StackLayout>
     </StackLayout>
 

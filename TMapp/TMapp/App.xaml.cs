@@ -12,7 +12,7 @@ namespace TMapp
 		{
 			InitializeComponent();
 
-			MainPage = new NavigationPage(new MapPage(""));
+			MainPage = new NavigationPage(new MainPage());
 		}
 
 		protected override void OnStart ()

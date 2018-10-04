@@ -30,35 +30,9 @@ namespace TMapp.Views
             FStartingCoordinate = LPosition;
             map.MoveToRegion(MapSpan.FromCenterAndRadius(LPosition, Distance.FromMiles(0.2)));
 
-            // ICollection<Incident> LIncidents = LReqIncidents.Result;
-
-            // foreach(var item in LIncidents)
-            // {
-            // }
-            // User NewUser = new User();
-            // NewUser.IdUser = 1;
-            // NewUser.Name = "Vinicius";
-            // NewUser.City = "Sorocaba";
-
-            // IncidentType NewIncidentType = new IncidentType();
-            // NewIncidentType.IdType = 1;
-            // NewIncidentType.TypeName = "Transito";
-
-            // Incident NewIncident = new Incident();
-            // NewIncident.IdIncident = 1;
-            // NewIncident.UserAuthor = NewUser;
-
-            // IncidentRating NewIncidentRating = new IncidentRating();
-            // NewIncidentRating.IdIncident = 1;
-            // NewIncidentRating.Incident = NewIncident;
-            // NewIncidentRating.RatingUser = NewUser;
-            // NewIncidentRating.PositiveVote = true;
-
-            //NewIncident.Rating.Add(NewIncidentRating);
-            //NewIncident.Description = "Aconteceu algo por aqui que eu nao sei explicar!";
-
             LoadIncidents();
 
+            #region MapEvents
             //Evento chamado toda vez que o mapa for clicado
             map.MapClicked += (sender, e) =>
             {
@@ -68,12 +42,9 @@ namespace TMapp.Views
 
                 AddIncident(LPos);
 
-                //var lat = e.Point.Latitude.ToString("0.000");
-                //var lng = e.Point.Longitude.ToString("0.000");
-
-                //this.DisplayAlert("MapClicked", $"{lat}/{lng}", "CLOSE");
             };
 
+            //Evento quando o pin for clicado
             map.PinClicked += (sender, e) =>
             {
                 if (e.Pin != null)
@@ -84,85 +55,20 @@ namespace TMapp.Views
                 }
             };
 
-            
-        }
-
-        public BitmapDescriptor PinImageDispatcher(int LIncidentType)
-        {
-            if(LIncidentType >= 0 && LIncidentType <= 2)
-            {
-                if (Device.RuntimePlatform.Equals(Device.iOS))
-                {
-                    return BitmapDescriptorFactory.FromBundle("ViolencePin");
-                }
-                else if (Device.RuntimePlatform.Equals(Device.Android))
-                {
-                    return BitmapDescriptorFactory.FromBundle("ViolencePin.png");
-                }
-            }
-            else if(LIncidentType == 3)
-            {
-                if (Device.RuntimePlatform.Equals(Device.iOS))
-                {
-                    return BitmapDescriptorFactory.FromBundle("DisasterPin");
-                }
-                else if (Device.RuntimePlatform.Equals(Device.Android))
-                {
-                    return BitmapDescriptorFactory.FromBundle("DisasterPinBlue.png");
-                }
-            }
-            else if(LIncidentType >= 4 && LIncidentType <= 5)
-            {
-                if (Device.RuntimePlatform.Equals(Device.iOS))
-                {
-                    return BitmapDescriptorFactory.FromBundle("EventPin");
-                }
-                else if (Device.RuntimePlatform.Equals(Device.Android))
-                {
-                    return BitmapDescriptorFactory.FromBundle("EventPin.png");
-                }
-            }
-            else if(LIncidentType >= 6 && LIncidentType <= 7)
-            {
-                if (Device.RuntimePlatform.Equals(Device.iOS))
-                {
-                    return BitmapDescriptorFactory.FromBundle("TrafficPin");
-                }
-                else if (Device.RuntimePlatform.Equals(Device.Android))
-                {
-                    return BitmapDescriptorFactory.FromBundle("TrafficPin.png");
-                }
-            }
-            else if(LIncidentType >= 8 && LIncidentType <= 9)
-            {
-                if (Device.RuntimePlatform.Equals(Device.iOS))
-                {
-                    return BitmapDescriptorFactory.FromBundle("EnvironmentPin");
-                }
-                else if (Device.RuntimePlatform.Equals(Device.Android))
-                {
-                    return BitmapDescriptorFactory.FromBundle("EnvironmentPin.png");
-                }
-            }
-                return BitmapDescriptorFactory.DefaultMarker(Color.White);
-            
+            #endregion
         }
 
         public void LoadIncidents()
         {
-            var LReqIncidents = GetIncidentsAsync();
-            LReqIncidents.Wait();
-            var LIncidents = LReqIncidents.Result;
+            var LReqIncidents = GetIncidents();
+           // LReqIncidents.Wait();
+            //var LIncidents = LReqIncidents.Result;
 
-            foreach(var Incident in LIncidents)
+            foreach(var Incident in LReqIncidents)
             {
-                //BitmapDescriptor LPin = BitmapDescriptorFactory.DefaultMarker(Color.White);
-
-                //LPin = PinImageDispatcher((int)Incident.Category.IncidentType);
-
                 var LCategory = GetCategoryById(Incident.IdCategory);
-                LCategory.Wait();
-                Incident.Category = LCategory.Result;
+                //LCategory.Wait();
+                Incident.Category = LCategory;
 
                 Pin newPin = new Pin()
                 {
@@ -185,23 +91,13 @@ namespace TMapp.Views
 
             Task LProcess = Navigation.PushModalAsync(LIncidentCreation);
 
-            //Incident LNewIncident = LIncidentCreation.CreateIncident();
+            map.Pins.Clear();
 
-            //Pin newPin = new Pin()
-            //{
-            //    Type = PinType.Place,
-            //    //Label = LNewIncident.Type.TypeName,
-            //    Address = LNewIncident.City,
-            //    Position = new Position(LPosXY.Latitude, LPosXY.Longitude)
-            //};
-
-            //newPin.Tag = LNewIncident;
-
-            //map.Pins.Add(newPin);
+            LoadIncidents();
         }
 
         HttpClient FCliente = new HttpClient();
-        public async Task<ICollection<Incident>> GetIncidentsAsync()
+        public ICollection<Incident> GetIncidents()
         {
             try
             {
@@ -218,7 +114,7 @@ namespace TMapp.Views
             }
         }
 
-        public async Task<IncidentCategory> GetCategoryById(int LId)
+        public IncidentCategory GetCategoryById(int LId)
         {
             try
             {
@@ -256,6 +152,67 @@ namespace TMapp.Views
             LResults.Add(LPosition);
 
             return LResults;
+        }
+
+        public BitmapDescriptor PinImageDispatcher(int LIncidentType)
+        {
+            if (LIncidentType == 0)
+            {
+                if (Device.RuntimePlatform.Equals(Device.iOS))
+                {
+                    return BitmapDescriptorFactory.FromBundle("ViolencePin");
+                }
+                else if (Device.RuntimePlatform.Equals(Device.Android))
+                {
+                    return BitmapDescriptorFactory.FromBundle("ViolencePin.png");
+                }
+            }
+            else if (LIncidentType == 1)
+            {
+                if (Device.RuntimePlatform.Equals(Device.iOS))
+                {
+                    return BitmapDescriptorFactory.FromBundle("DisasterPin");
+                }
+                else if (Device.RuntimePlatform.Equals(Device.Android))
+                {
+                    return BitmapDescriptorFactory.FromBundle("DisasterPinBlue.png");
+                }
+            }
+            else if (LIncidentType == 2)
+            {
+                if (Device.RuntimePlatform.Equals(Device.iOS))
+                {
+                    return BitmapDescriptorFactory.FromBundle("EventPin");
+                }
+                else if (Device.RuntimePlatform.Equals(Device.Android))
+                {
+                    return BitmapDescriptorFactory.FromBundle("EventPin.png");
+                }
+            }
+            else if (LIncidentType == 3)
+            {
+                if (Device.RuntimePlatform.Equals(Device.iOS))
+                {
+                    return BitmapDescriptorFactory.FromBundle("TrafficPin");
+                }
+                else if (Device.RuntimePlatform.Equals(Device.Android))
+                {
+                    return BitmapDescriptorFactory.FromBundle("TrafficPin.png");
+                }
+            }
+            else if (LIncidentType == 4)
+            {
+                if (Device.RuntimePlatform.Equals(Device.iOS))
+                {
+                    return BitmapDescriptorFactory.FromBundle("EnvironmentPin");
+                }
+                else if (Device.RuntimePlatform.Equals(Device.Android))
+                {
+                    return BitmapDescriptorFactory.FromBundle("EnvironmentPin.png");
+                }
+            }
+            return BitmapDescriptorFactory.DefaultMarker(Color.White);
+
         }
     }
 }

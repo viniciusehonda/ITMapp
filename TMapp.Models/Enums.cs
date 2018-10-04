@@ -35,7 +35,7 @@ namespace TMapp.Models
         Event, //Party, street market ...
         Traffic, //Accident ... etc
         Environment, //Trash, bad smell ... etc
-        None
+        Other
     }
 
     public class Enums

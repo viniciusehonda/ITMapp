@@ -20,6 +20,34 @@ namespace TMapp.Models
         public string City { get; set; }
         public double PosX { get; set; }
         public double PosY { get; set; }
+        public bool Status { get; set; }
 
+        public void CreateIncident(IncidentCategory ACategory, User AUserAuthor, string ADescription, DateTime? ADataHora, double APosX, double APosY)
+        {
+
+            this.Category = ACategory;
+            this.IdCategory = ACategory.IdCategory;
+            this.UserAuthor = AUserAuthor;
+            this.IdUser = AUserAuthor.IdUser;
+            this.Description = ADescription;
+            this.DataHora = ADataHora;
+            this.PosX = APosX;
+            this.PosY = APosY;
+            this.Status = true;
+            
+        }
+
+        public void EditIncident(IncidentCategory ACategory, string ADescription, DateTime? ADataHora)
+        {
+            this.Category = ACategory;
+            this.IdCategory = ACategory.IdCategory;
+            this.Description = ADescription;
+            this.DataHora = ADataHora;
+        }
+
+        public void DisableIncident()
+        {
+            this.Status = false;
+        }
     }
 }

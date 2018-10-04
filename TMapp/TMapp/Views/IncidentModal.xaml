@@ -4,10 +4,14 @@
              x:Class="TMapp.Views.IncidentModal">
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name="xLabel"  Text="{Binding LLabel}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-
+            <Label x:Name="xLabel"  Text="Categoria:"/>
+            <Label x:Name="xLblTipo"  Text="{Binding VlblTipo}"/>
+            <Label x:Name="xLabel2"  Text="Descrição:"/>
+            <Label x:Name="xLblDescricao"  Text="{Binding VlblDescricao}"/>
+            <Label x:Name="xLabel3"  Text="Data:"/>
+            <Label x:Name="xLblData"/>
+            <Label x:Name="xLabel4" Text="Hora:"/>
+            <Label x:Name="xLblHora"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

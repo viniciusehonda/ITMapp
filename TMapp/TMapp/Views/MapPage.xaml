@@ -9,6 +9,7 @@
                 <RowDefinition Height="0.5*"/>
                 <RowDefinition Height="6*"/>
             </Grid.RowDefinitions>
+
             <ScrollView Grid.Row="0" Orientation="Horizontal">
 
                 <Grid>
@@ -26,6 +27,7 @@
                 </Grid>
 
             </ScrollView>
+
 
             <maps:Map Grid.Row="1" x:Name="map"
                       InitialCameraUpdate="{Binding FStartingCoordinate}"

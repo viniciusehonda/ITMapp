@@ -12,5 +12,27 @@ namespace TMapp.Models
         public int IdUser { get; set; }
         public User RatingUser { get; set; }
         public bool PositiveVote { get; set; }
+
+        public void CreateRating(User ARatingUser, Incident AIncident)
+        {
+
+            this.Incident = AIncident;
+            this.IdIncident = AIncident.IdIncident;
+            this.RatingUser = ARatingUser;
+            this.IdUser = ARatingUser.IdUser;
+
+        }
+
+        public void VotePositive(User ARatingUser, Incident AIncident)
+        {
+
+            this.PositiveVote = true;
+        }
+
+        public void VoteNegative()
+        {
+
+            this.PositiveVote = false;
+        }
     }
 }

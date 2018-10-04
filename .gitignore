@@ -3,3 +3,8 @@
 ################################################################################
 
 /.vs/TMapp
+/TMapp/TMapp/bin
+/TMapp/TMapp/obj
+/TMapp/TMapp.Android/bin
+/TMapp/TMapp.Android/obj
+

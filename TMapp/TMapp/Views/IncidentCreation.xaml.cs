@@ -30,7 +30,7 @@ namespace TMapp.Views
             }
         }
 
-        public DateTime FHour { get; set; }
+        public TimeSpan FHour { get; set; }
         public string FDescription { get; set; }
         public DateTime FDataHora { get; set; }
         public string FSelectedCategory { get; set; }
@@ -58,6 +58,8 @@ namespace TMapp.Views
 
             LPosX = APosXY.Latitude;
             LPosY = APosXY.Longitude;
+            FDataHora = new DateTime();
+            FDataHora = DateTime.Now;
 
             async Task<ICollection<IncidentCategory>> GetCategoriesAsync()
             {
@@ -92,7 +94,7 @@ namespace TMapp.Views
             LIncident.UserAuthor = LAuthor;
 
             LIncident.Description = FDescription;
-            FDataHora.Date.Add(new TimeSpan(FHour.Hour, FHour.Minute, FHour.Second));
+            FDataHora.Date.Add(FHour);
             LIncident.DataHora = FDataHora;
 
             LIncident.Country = LCountry;
@@ -128,7 +130,7 @@ namespace TMapp.Views
                 return IncidentCategoryEnum.Environment;
             }
 
-            return IncidentCategoryEnum.None;
+            return IncidentCategoryEnum.Other;
         }
 
         public List<string> GetPickerOptions()
@@ -275,9 +277,9 @@ namespace TMapp.Views
 
             LIncident.IdUser = LAuthor.IdUser;
             LIncident.UserAuthor = LAuthor;
-
+            FDataHora = dtpDateHour.Date;
             LIncident.Description = FDescription;
-            FDataHora.Date.Add(new TimeSpan(FHour.Hour, FHour.Minute, FHour.Second));
+            FDataHora = FDataHora.Add(FHour);
             LIncident.DataHora = FDataHora;
 
             LIncident.Country = LAuthor.Country;
@@ -295,6 +297,11 @@ namespace TMapp.Views
                 var result = FCliente.PostAsync(url, content);
 
                 result.Wait();
+
+                DisplayAlert("Aviso", "Ocorrência adicionada com sucesso!", "OK");
+                Application.Current.MainPage.Navigation.PopAsync();
+                Application.Current.MainPage.Navigation.PushAsync(new MapPage(""));
+                Navigation.PopModalAsync();
                 //var final = result.Result.EnsureSuccessStatusCode();
             }
             catch (Exception ex)

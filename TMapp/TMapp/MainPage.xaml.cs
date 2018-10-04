@@ -23,8 +23,9 @@ namespace TMapp
 
 		private void ButtonBuscar_Clicked(object sender, EventArgs e)
 		{
-			FEndereco = String.Format(FRua + " " + FCidade);
-			Navigation.PushAsync(new MapPage(FEndereco));
+            //FEndereco = String.Format(FRua + " " + FCidade);
+            Navigation.PushAsync(new MapPage(""));
+
 		}
 	}
 }
