@@ -1,4 +1,5 @@
 using System;
+using TMapp.Models;
 using TMapp.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -6,19 +7,22 @@ using Xamarin.Forms.Xaml;
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace TMapp
 {
-	public partial class App : Application
-	{
+    public partial class App : Application
+    {
+        public static bool IsUserLoggedIn { get; set; }
+        public static User CurrentUser { get; set; }
+
 		public App ()
 		{
 			InitializeComponent();
 
-			MainPage = new NavigationPage(new MainPage());
 		}
 
 		protected override void OnStart ()
 		{
-			// Handle when your app starts
-		}
+            MainPage = new NavigationPage(new Login());
+            // Handle when your app starts
+        }
 
 		protected override void OnSleep ()
 		{
