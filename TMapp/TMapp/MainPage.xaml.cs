@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TMapp.Helpers;
 using TMapp.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
@@ -24,7 +25,8 @@ namespace TMapp
 		private void ButtonBuscar_Clicked(object sender, EventArgs e)
 		{
             //FEndereco = String.Format(FRua + " " + FCidade);
-            Navigation.PushAsync(new MapPage(""));
+            IncidentFilter LFilter = new IncidentFilter();
+            Navigation.PushAsync(new MapPage(LFilter));
 
 		}
 	}

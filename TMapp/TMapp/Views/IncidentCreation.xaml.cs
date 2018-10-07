@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using TMapp.Helpers;
 using TMapp.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
@@ -61,7 +62,7 @@ namespace TMapp.Views
             FDataHora = new DateTime();
             FDataHora = DateTime.Now;
 
-            async Task<ICollection<IncidentCategory>> GetCategoriesAsync()
+            ICollection<IncidentCategory> GetCategories()
             {
                 try
                 {
@@ -78,10 +79,12 @@ namespace TMapp.Views
                 }
             }
 
-            var LTask = GetCategoriesAsync();
-            LTask.Wait();
+            FCategories = GetCategories();
 
-            FCategories = LTask.Result;
+            //var LTask = GetCategoriesAsync();
+            //LTask.Wait();
+
+            //FCategories = LTask.Result;
         }
 
         public Incident CreateIncident()
@@ -91,7 +94,7 @@ namespace TMapp.Views
             LIncident.IdCategory = FCurrentCategory.IdCategory;
             LIncident.Category = FCurrentCategory;
 
-            LIncident.UserAuthor = LAuthor;
+            LIncident.UserAuthor = App.CurrentUser;
 
             LIncident.Description = FDescription;
             FDataHora.Date.Add(FHour);
@@ -248,45 +251,39 @@ namespace TMapp.Views
 
             Incident LIncident = new Incident();
 
-            LIncident.IdCategory = FCurrentCategory.IdCategory;
-            LIncident.Category = FCurrentCategory;
+            //ICollection<User> GetUser()
+            //{
+            //    try
+            //    {
+            //        string url = "https://tmappwebapi20180922043720.azurewebsites.net/api/User";
+            //        var response = FCliente.GetStringAsync(url);
+            //        response.Wait();
+            //        var res = response.Result;
+            //        var LResCategories = JsonConvert.DeserializeObject<ICollection<User>>(res);
+            //        return LResCategories;
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        throw ex;
+            //    }
+            //}
+
+            //var LTask = GetUser();
+            //LTask.Wait();
 
 
-            async Task<ICollection<User>> GetUserAsync()
-            {
-                try
-                {
-                    string url = "https://tmappwebapi20180922043720.azurewebsites.net/api/User";
-                    var response = FCliente.GetStringAsync(url);
-                    response.Wait();
-                    var res = response.Result;
-                    var LResCategories = JsonConvert.DeserializeObject<ICollection<User>>(res);
-                    return LResCategories;
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
+            //LAuthor = LTask.FirstOrDefault();
 
-            var LTask = GetUserAsync();
-            LTask.Wait();
-
-            LAuthor = LTask.Result.FirstOrDefault();
-
-
-            LIncident.IdUser = LAuthor.IdUser;
-            LIncident.UserAuthor = LAuthor;
             FDataHora = dtpDateHour.Date;
-            LIncident.Description = FDescription;
             FDataHora = FDataHora.Add(FHour);
-            LIncident.DataHora = FDataHora;
 
-            LIncident.Country = LAuthor.Country;
-            LIncident.State = LAuthor.State;
-            LIncident.City = LAuthor.City;
-            LIncident.PosX = LPosX;
-            LIncident.PosY = LPosY;
+            //LIncident.Country = LAuthor.Country;
+            //LIncident.State = LAuthor.State;
+            //LIncident.City = LAuthor.City;
+            //LIncident.PosX = LPosX;
+            //LIncident.PosY = LPosY;
+
+            LIncident.CreateIncident(FCurrentCategory, App.CurrentUser, FDescription, FDataHora, LPosX, LPosY);
             // async Task<ICollection<IncidentCategory>> IncidentForm()
             // {
             try
@@ -300,7 +297,8 @@ namespace TMapp.Views
 
                 DisplayAlert("Aviso", "Ocorrência adicionada com sucesso!", "OK");
                 Application.Current.MainPage.Navigation.PopAsync();
-                Application.Current.MainPage.Navigation.PushAsync(new MapPage(""));
+                IncidentFilter LFilter = new IncidentFilter();
+                Application.Current.MainPage.Navigation.PushAsync(new MapPage(LFilter));
                 Navigation.PopModalAsync();
                 //var final = result.Result.EnsureSuccessStatusCode();
             }

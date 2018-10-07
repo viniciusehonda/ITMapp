@@ -4,9 +4,20 @@
              x:Class="TMapp.Views.SingUp">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label x:Name="xLabel1"  Text="Nome:"/>
+            <Entry x:Name="xName" Text="{Binding FName}"></Entry>
+            <Label x:Name="xLabel2"  Text="e-mail:"/>
+            <Entry  x:Name="xEmail" Text="{Binding FEmail}"></Entry>
+            <Label x:Name="xLabel3" Text="Password:"/>
+            <Entry x:Name="xPassword" Text="{Binding FPassword}"></Entry>
+            <Label x:Name="xLabel4"  Text="Pais:"/>
+            <Entry  x:Name="xCountry" Text="{Binding FCountry}"></Entry>
+            <Label x:Name="xLabel5"  Text="Estado:"/>
+            <Entry  x:Name="xState" Text="{Binding FState}"></Entry>
+            <Label x:Name="xLabel6"  Text="Cidade:"/>
+            <Entry  x:Name="xCity" Text="{Binding FCity}"></Entry>
+            <Button x:Name="ButtonForm" Text="Cadastrar" VerticalOptions="Center" Clicked="ButtonForm_Clicked"></Button>
+            <ProgressBar x:Name="pb_ProgressBar" Grid.Row="2"></ProgressBar>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

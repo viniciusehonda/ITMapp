@@ -13,7 +13,7 @@
             <Entry x:Name="passwordEntry" IsPassword="true" />
             <Button Text="Login" Clicked="OnLoginButtonClicked" />
             <Label x:Name="messageLabel" />
-            <ProgressBar x:Name="pb_ProgressBar" Progress="0.6" Grid.Row="2"></ProgressBar>
+            <ProgressBar x:Name="pb_ProgressBar" Grid.Row="2"></ProgressBar>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

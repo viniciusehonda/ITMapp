@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using TMapp.Helpers;
 using TMapp.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
@@ -19,18 +20,18 @@ namespace TMapp.Views
     {
         public Position FStartingCoordinate { get; set; }
 
-        public MapPage(string AEnderecoInicial)
+        public MapPage(IncidentFilter AFilter)
         {
             InitializeComponent();
 
-            Task Teste;
+            Task FTask;
             List<Position> FCoordinates;
-            FCoordinates = FindCoordinates(AEnderecoInicial);
+            FCoordinates = FindCoordinates("");
             Position LPosition = FCoordinates.First();
             FStartingCoordinate = LPosition;
             map.MoveToRegion(MapSpan.FromCenterAndRadius(LPosition, Distance.FromMiles(0.2)));
 
-            LoadIncidents();
+            LoadIncidents(AFilter);
 
             #region MapEvents
             //Evento chamado toda vez que o mapa for clicado
@@ -51,38 +52,57 @@ namespace TMapp.Views
                 {
                     var LIncidentModal = new IncidentModal(e.Pin.Tag);
 
-                    Teste = Navigation.PushModalAsync(LIncidentModal);
+                    FTask = Navigation.PushModalAsync(LIncidentModal);
+                    //FTask.Dispose();
                 }
             };
 
             #endregion
         }
 
-        public void LoadIncidents()
+        public void OnFilterButtonClicked(object sender, EventArgs e)
         {
-            var LReqIncidents = GetIncidents();
-           // LReqIncidents.Wait();
-            //var LIncidents = LReqIncidents.Result;
+            Task LTask;
+            var LFilterModal = new FilterModal();
+            LTask = Navigation.PushModalAsync(LFilterModal);
+            LTask.Dispose();
+        }
 
-            foreach(var Incident in LReqIncidents)
+        public void LoadIncidents(IncidentFilter AFilters)
+        {
+            ICollection<Incident> LReqIncidents;
+            if (AFilters.IdCategory.HasValue || AFilters.DateStart.HasValue)
             {
-                var LCategory = GetCategoryById(Incident.IdCategory);
-                //LCategory.Wait();
-                Incident.Category = LCategory;
-
-                Pin newPin = new Pin()
-                {
-                    Type = PinType.Place,
-                    Label = Incident.Description,
-                    Address = Incident.City,
-                    Icon = PinImageDispatcher((int)Incident.Category.IncidentType),
-                    Position = new Position(Incident.PosX, Incident.PosY)
-                };
-
-                newPin.Tag = Incident;
-
-                map.Pins.Add(newPin);
+                LReqIncidents = GetFilteredIncidents(AFilters);
             }
+            else
+            {
+                LReqIncidents = GetIncidents();
+            }
+
+            if(LReqIncidents.Count > 0)
+            {
+                foreach (var Incident in LReqIncidents)
+                {
+                    var LCategory = GetCategoryById(Incident.IdCategory);
+
+                    Incident.Category = LCategory;
+
+                    Pin newPin = new Pin()
+                    {
+                        Type = PinType.Place,
+                        Label = Incident.Description,
+                        Address = Incident.City,
+                        Icon = PinImageDispatcher((int)Incident.Category.IncidentType),
+                        Position = new Position(Incident.PosX, Incident.PosY)
+                    };
+
+                    newPin.Tag = Incident;
+
+                    map.Pins.Add(newPin);
+                }
+            }
+            
         }
 
         public void AddIncident(Position LPosXY)
@@ -92,8 +112,10 @@ namespace TMapp.Views
             Task LProcess = Navigation.PushModalAsync(LIncidentCreation);
 
             map.Pins.Clear();
+            //LProcess.Dispose();
 
-            LoadIncidents();
+            IncidentFilter LFilter = new IncidentFilter();
+            LoadIncidents(LFilter);
         }
 
         HttpClient FCliente = new HttpClient();
@@ -101,12 +123,39 @@ namespace TMapp.Views
         {
             try
             {
-                string url = "https://tmappwebapi20180922043720.azurewebsites.net/api/Incident/";
+                string url = "https://tmappwebapi20180922043720.azurewebsites.net/api/Incident";
                 var response = FCliente.GetStringAsync(url);
                 response.Wait();
                 var res = response.Result;
                 var Incidents = JsonConvert.DeserializeObject<ICollection<Incident>>(res);
+
+                //response.Dispose();
+                //FCliente.Dispose();
                 return Incidents;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public ICollection<Incident> GetFilteredIncidents(IncidentFilter AFilters)
+        {
+
+            try
+            {
+                string url = "https://tmappwebapi20180922043720.azurewebsites.net/api/FilteredIncident";
+                var json = JsonConvert.SerializeObject(AFilters);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var result = FCliente.PostAsync(url, content);
+                result.Wait();
+                var res = result.Result.Content.ReadAsStringAsync();
+                res.Wait();
+                var LIncidents = JsonConvert.DeserializeObject<ICollection<Incident>>(res.Result);
+                res.Dispose();
+                FCliente.Dispose();
+
+                return LIncidents;
             }
             catch (Exception ex)
             {
@@ -123,6 +172,9 @@ namespace TMapp.Views
                 response.Wait();
                 var res = response.Result;
                 var Categories = JsonConvert.DeserializeObject<IncidentCategory>(res);
+
+                response.Dispose();
+                FCliente.Dispose();
                 return Categories;
             }
             catch (Exception ex)

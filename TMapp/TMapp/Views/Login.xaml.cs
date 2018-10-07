@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using TMapp.Helpers;
 using TMapp.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -44,7 +45,9 @@ namespace TMapp.Views
             if (isValid)
             {
                 App.IsUserLoggedIn = true;
-                Navigation.InsertPageBefore(new MapPage(""), this);
+                IncidentFilter LFilter = new IncidentFilter();
+                
+                Navigation.InsertPageBefore(new MapPage(LFilter), this);
                 await Navigation.PopAsync();
             }
             else
@@ -68,7 +71,8 @@ namespace TMapp.Views
                 var res = result.Result.Content.ReadAsStringAsync();
                 res.Wait();
                 var LUser = JsonConvert.DeserializeObject<User>(res.Result);
-
+                //res.Dispose();
+                //FCliente.Dispose();
                 App.CurrentUser = LUser;
 
             }
@@ -77,7 +81,6 @@ namespace TMapp.Views
                 throw ex;
             }
 
-            //Pb_ProgressBar.ProgressTo(.9, 250, Easing.SinIn);
             pb_ProgressBar.ProgressTo(0.8, 250, Easing.SinIn);
             return user.EMail == App.CurrentUser.EMail && user.Password == App.CurrentUser.Password;
         }

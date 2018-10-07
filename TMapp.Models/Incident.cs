@@ -29,6 +29,9 @@ namespace TMapp.Models
             this.IdCategory = ACategory.IdCategory;
             this.UserAuthor = AUserAuthor;
             this.IdUser = AUserAuthor.IdUser;
+            this.Country = AUserAuthor.Country;
+            this.State = AUserAuthor.State;
+            this.City = AUserAuthor.City;
             this.Description = ADescription;
             this.DataHora = ADataHora;
             this.PosX = APosX;
