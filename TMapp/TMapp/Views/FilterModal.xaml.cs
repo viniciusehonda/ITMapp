@@ -10,11 +10,20 @@ using TMapp.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+/*
+                     <x:String>Todos</x:String>
+                    <x:String>Violência</x:String>
+                    <x:String>Desastre</x:String>
+                    <x:String>Evento</x:String>
+                    <x:String>Trânsito</x:String>
+                    <x:String>Ambiente</x:String>
+                    */
+
 namespace TMapp.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class FilterModal : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class FilterModal : ContentPage
+    {
         public int? FIdCategory { get; set; }
         public DateTime? FDateStart { get; set; }
         HttpClient FCliente = new HttpClient();
@@ -35,7 +44,7 @@ namespace TMapp.Views
                 pckCategory.Items.Add(LCate.CategoryName);
             }
 
-		}
+        }
 
         private void dtpDateHour_Selected(object sender, EventArgs e)
         {
@@ -47,23 +56,23 @@ namespace TMapp.Views
         {
             string FSelectedCategory = pckCategory.Items[pckCategory.SelectedIndex];
 
-            if (FSelectedCategory.Equals("Violência"))
+            if (FSelectedCategory.Equals("Assalto") || FSelectedCategory.Equals("Roubo") || FSelectedCategory.Equals("Furto"))
             {
                 SelectedCategory = FCategories.Where(c => c.IncidentType == IncidentCategoryEnum.Violence).First();
             }
-            else if (FSelectedCategory.Equals("Desastre"))
+            else if (FSelectedCategory.Equals("Enchente"))
             {
                 SelectedCategory = FCategories.Where(c => c.IncidentType == IncidentCategoryEnum.Disaster).First();
             }
-            else if (FSelectedCategory.Equals("Evento"))
+            else if (FSelectedCategory.Equals("Festa") || FSelectedCategory.Equals("Feira"))
             {
                 SelectedCategory = FCategories.Where(c => c.IncidentType == IncidentCategoryEnum.Event).First();
             }
-            else if (FSelectedCategory.Equals("Trânsito"))
+            else if (FSelectedCategory.Equals("Transito") || FSelectedCategory.Equals("Acidente"))
             {
                 SelectedCategory = FCategories.Where(c => c.IncidentType == IncidentCategoryEnum.Traffic).First();
             }
-            else if (FSelectedCategory.Equals("Evento"))
+            else if (FSelectedCategory.Equals("AcumuloLixo") || FSelectedCategory.Equals("MalCheiro"))
             {
                 SelectedCategory = FCategories.Where(c => c.IncidentType == IncidentCategoryEnum.Event).First();
             }
@@ -105,7 +114,7 @@ namespace TMapp.Views
 
             if(DateSelected == true)
             {
-                LFilter.DateStart = FDateStart;
+                LFilter.DateStart = JsonConvert.SerializeObject(FDateStart.Value);
             }
             else
             {

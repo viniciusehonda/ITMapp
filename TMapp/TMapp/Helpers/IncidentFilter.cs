@@ -7,7 +7,7 @@ namespace TMapp.Helpers
     public class IncidentFilter
     {
         public int? IdCategory { get; set; }
-        public DateTime? DateStart { get; set; }
+        public string DateStart { get; set; }
 
     }
 }

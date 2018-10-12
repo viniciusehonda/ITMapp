@@ -20,7 +20,7 @@
             <Picker x:Name="pckType" HorizontalOptions="FillAndExpand" Title="Seleciona a categoria:"
                     SelectedIndexChanged="pckType_SelectedIndexChanged">
             </Picker>
-            <Label x:Name="xLabel3"  Text="Descrição:"/>
+            <Label x:Name="xLabel3"  Text="Descrição:" />
             <Entry Text="{Binding FDescription}"></Entry>
             <Label x:Name="xLabel4"  Text="Data:"/>
             <DatePicker x:Name="dtpDateHour" MinimumDate="01/01/2018"

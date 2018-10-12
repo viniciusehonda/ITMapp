@@ -251,37 +251,8 @@ namespace TMapp.Views
 
             Incident LIncident = new Incident();
 
-            //ICollection<User> GetUser()
-            //{
-            //    try
-            //    {
-            //        string url = "https://tmappwebapi20180922043720.azurewebsites.net/api/User";
-            //        var response = FCliente.GetStringAsync(url);
-            //        response.Wait();
-            //        var res = response.Result;
-            //        var LResCategories = JsonConvert.DeserializeObject<ICollection<User>>(res);
-            //        return LResCategories;
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        throw ex;
-            //    }
-            //}
-
-            //var LTask = GetUser();
-            //LTask.Wait();
-
-
-            //LAuthor = LTask.FirstOrDefault();
-
             FDataHora = dtpDateHour.Date;
             FDataHora = FDataHora.Add(FHour);
-
-            //LIncident.Country = LAuthor.Country;
-            //LIncident.State = LAuthor.State;
-            //LIncident.City = LAuthor.City;
-            //LIncident.PosX = LPosX;
-            //LIncident.PosY = LPosY;
 
             LIncident.CreateIncident(FCurrentCategory, App.CurrentUser, FDescription, FDataHora, LPosX, LPosY);
             // async Task<ICollection<IncidentCategory>> IncidentForm()
@@ -300,7 +271,7 @@ namespace TMapp.Views
                 IncidentFilter LFilter = new IncidentFilter();
                 Application.Current.MainPage.Navigation.PushAsync(new MapPage(LFilter));
                 Navigation.PopModalAsync();
-                //var final = result.Result.EnsureSuccessStatusCode();
+
             }
             catch (Exception ex)
             {

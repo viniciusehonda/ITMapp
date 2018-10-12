@@ -25,9 +25,9 @@ namespace TMapp.Models
         public void CreateIncident(IncidentCategory ACategory, User AUserAuthor, string ADescription, DateTime? ADataHora, double APosX, double APosY)
         {
 
-            this.Category = ACategory;
+            //this.Category = ACategory;
             this.IdCategory = ACategory.IdCategory;
-            this.UserAuthor = AUserAuthor;
+            //this.UserAuthor = AUserAuthor;
             this.IdUser = AUserAuthor.IdUser;
             this.Country = AUserAuthor.Country;
             this.State = AUserAuthor.State;

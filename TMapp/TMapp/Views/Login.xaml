@@ -3,14 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TMapp.Views.Login">
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Consultar Mapa" Clicked="OnConsultaButtonClicked" />
         <ToolbarItem Text="Sign Up" Clicked="OnSignUpButtonClicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout VerticalOptions="StartAndExpand">
-            <Label Text="Username" />
-            <Entry x:Name="usernameEntry" Placeholder="username" />
-            <Label Text="Password" />
-            <Entry x:Name="passwordEntry" IsPassword="true" />
+            <Label Text="e-mail" />
+            <Entry x:Name="usernameEntry" Placeholder="e-mail" />
+            <Label Text="Senha" />
+            <Entry x:Name="passwordEntry" Placeholder="senha" IsPassword="true" />
             <Button Text="Login" Clicked="OnLoginButtonClicked" />
             <Label x:Name="messageLabel" />
             <ProgressBar x:Name="pb_ProgressBar" Grid.Row="2"></ProgressBar>

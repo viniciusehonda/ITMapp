@@ -16,14 +16,12 @@ namespace TMapp.Models
         public void CreateRating(User ARatingUser, Incident AIncident)
         {
 
-            this.Incident = AIncident;
             this.IdIncident = AIncident.IdIncident;
-            this.RatingUser = ARatingUser;
             this.IdUser = ARatingUser.IdUser;
 
         }
 
-        public void VotePositive(User ARatingUser, Incident AIncident)
+        public void VotePositive()
         {
 
             this.PositiveVote = true;

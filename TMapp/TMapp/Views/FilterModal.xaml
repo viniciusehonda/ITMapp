@@ -9,19 +9,14 @@
             <Picker x:Name="pckCategory" HorizontalOptions="FillAndExpand" Title="Seleciona a categoria:"
                     SelectedIndexChanged="pckCategory_SelectedIndexChanged">
                 <Picker.Items>
-                    <x:String>Todos</x:String>
-                    <x:String>Violência</x:String>
-                    <x:String>Desastre</x:String>
-                    <x:String>Evento</x:String>
-                    <x:String>Trânsito</x:String>
-                    <x:String>Ambiente</x:String>
+
                 </Picker.Items>
             </Picker>
             <Label x:Name="xLabel4"  Text="Data:"/>
             <DatePicker x:Name="dtpDateHour" MinimumDate="01/01/2018"
             MaximumDate="{x:Static system:DateTime.Today}" DateSelected="dtpDateHour_Selected"/>
             
-            <Button x:Name="ButtonForm" Text="Cadastrar Ocorrência" VerticalOptions="Center" Clicked="FilterButton_Clicked"></Button>
+            <Button x:Name="ButtonForm" Text="Aplicar Filtro" VerticalOptions="Center" Clicked="FilterButton_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

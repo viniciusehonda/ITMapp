@@ -30,7 +30,7 @@ namespace TMapp.Views
             Position LPosition = FCoordinates.First();
             FStartingCoordinate = LPosition;
             map.MoveToRegion(MapSpan.FromCenterAndRadius(LPosition, Distance.FromMiles(0.2)));
-
+            map.Pins.Clear();
             LoadIncidents(AFilter);
 
             #region MapEvents
@@ -51,8 +51,9 @@ namespace TMapp.Views
                 if (e.Pin != null)
                 {
                     var LIncidentModal = new IncidentModal(e.Pin.Tag);
-
-                    FTask = Navigation.PushModalAsync(LIncidentModal);
+                    //new IncidentModal(e.Pin.Tag);
+                    Navigation.PushModalAsync(LIncidentModal);
+                    //FTask = Navigation.PushModalAsync(LIncidentModal);
                     //FTask.Dispose();
                 }
             };
@@ -65,13 +66,21 @@ namespace TMapp.Views
             Task LTask;
             var LFilterModal = new FilterModal();
             LTask = Navigation.PushModalAsync(LFilterModal);
-            LTask.Dispose();
+            //LTask.Wait();
+            if (LTask.IsCompleted)
+                LTask.Dispose();
+        }
+
+        public void OnLoginButtonClicked(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new Login(), this);
+            Application.Current.MainPage.Navigation.PopAsync();
         }
 
         public void LoadIncidents(IncidentFilter AFilters)
         {
             ICollection<Incident> LReqIncidents;
-            if (AFilters.IdCategory.HasValue || AFilters.DateStart.HasValue)
+            if (AFilters.IdCategory.HasValue || AFilters.DateStart != null)
             {
                 LReqIncidents = GetFilteredIncidents(AFilters);
             }
@@ -80,29 +89,33 @@ namespace TMapp.Views
                 LReqIncidents = GetIncidents();
             }
 
-            if(LReqIncidents.Count > 0)
+            if (LReqIncidents != null)
             {
-                foreach (var Incident in LReqIncidents)
+                if (LReqIncidents.Count > 0)
                 {
-                    var LCategory = GetCategoryById(Incident.IdCategory);
-
-                    Incident.Category = LCategory;
-
-                    Pin newPin = new Pin()
+                    foreach (var Incident in LReqIncidents)
                     {
-                        Type = PinType.Place,
-                        Label = Incident.Description,
-                        Address = Incident.City,
-                        Icon = PinImageDispatcher((int)Incident.Category.IncidentType),
-                        Position = new Position(Incident.PosX, Incident.PosY)
-                    };
+                        var LCategory = GetCategoryById(Incident.IdCategory);
 
-                    newPin.Tag = Incident;
+                        Incident.Category = LCategory;
 
-                    map.Pins.Add(newPin);
+                        Pin newPin = new Pin()
+                        {
+                            Type = PinType.Place,
+                            Label = Incident.Description,
+                            Address = Incident.City,
+                            Icon = PinImageDispatcher((int)Incident.Category.IncidentType),
+                            Position = new Position(Incident.PosX, Incident.PosY)
+                        };
+
+                        newPin.Tag = Incident;
+
+                        map.Pins.Add(newPin);
+                    }
                 }
             }
-            
+
+
         }
 
         public void AddIncident(Position LPosXY)
@@ -113,14 +126,13 @@ namespace TMapp.Views
 
             map.Pins.Clear();
             //LProcess.Dispose();
-
-            IncidentFilter LFilter = new IncidentFilter();
-            LoadIncidents(LFilter);
+            //IncidentFilter LFilter = new IncidentFilter();
+            //LoadIncidents(LFilter);
         }
 
-        HttpClient FCliente = new HttpClient();
         public ICollection<Incident> GetIncidents()
         {
+            HttpClient FCliente = new HttpClient();
             try
             {
                 string url = "https://tmappwebapi20180922043720.azurewebsites.net/api/Incident";
@@ -141,21 +153,53 @@ namespace TMapp.Views
 
         public ICollection<Incident> GetFilteredIncidents(IncidentFilter AFilters)
         {
-
+            HttpClient FCliente = new HttpClient();
             try
             {
+                var teste = JsonConvert.DeserializeObject<DateTime>(AFilters.DateStart);
                 string url = "https://tmappwebapi20180922043720.azurewebsites.net/api/FilteredIncident";
                 var json = JsonConvert.SerializeObject(AFilters);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
                 var result = FCliente.PostAsync(url, content);
                 result.Wait();
                 var res = result.Result.Content.ReadAsStringAsync();
-                res.Wait();
-                var LIncidents = JsonConvert.DeserializeObject<ICollection<Incident>>(res.Result);
-                res.Dispose();
-                FCliente.Dispose();
+                if (res.Result != null)
+                {
+                    res.Wait();
+                    var LIncidents = JsonConvert.DeserializeObject<ICollection<Incident>>(res.Result);
+                    res.Dispose();
+                    FCliente.Dispose();
 
-                return LIncidents;
+                    return LIncidents;
+                }
+                else
+                {
+                    IEnumerable<Incident> LIncident = Enumerable.Empty<Incident>();
+                    return LIncident.ToList();
+                }
+
+                //return LIncidents;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public ICollection<IncidentCategory> GetCategories()
+        {
+            HttpClient FCliente = new HttpClient();
+            try
+            {
+                string url = "https://tmappwebapi20180922043720.azurewebsites.net/api/Category";
+                var response = FCliente.GetStringAsync(url);
+                response.Wait();
+                var res = response.Result;
+                var categories = JsonConvert.DeserializeObject<ICollection<IncidentCategory>>(res);
+
+                //response.Dispose();
+                //FCliente.Dispose();
+                return categories;
             }
             catch (Exception ex)
             {
@@ -165,16 +209,18 @@ namespace TMapp.Views
 
         public IncidentCategory GetCategoryById(int LId)
         {
+            HttpClient FCliente = new HttpClient();
             try
             {
                 string url = "https://tmappwebapi20180922043720.azurewebsites.net/api/Category/" + LId.ToString();
-                var response = FCliente.GetStringAsync(url);
+                var response = FCliente.GetAsync(url);
                 response.Wait();
-                var res = response.Result;
-                var Categories = JsonConvert.DeserializeObject<IncidentCategory>(res);
+                var res = response.Result.Content.ReadAsStringAsync();
+                res.Wait();
+                var Categories = JsonConvert.DeserializeObject<IncidentCategory>(res.Result);
 
-                response.Dispose();
-                FCliente.Dispose();
+                //response.Dispose();
+                //FCliente.Dispose();
                 return Categories;
             }
             catch (Exception ex)

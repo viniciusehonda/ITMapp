@@ -3,15 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TMapp.Views.IncidentModal">
     <ContentPage.Content>
-        <StackLayout>
-            <Label x:Name="xLabel"  Text="Categoria:"/>
-            <Label x:Name="xLblTipo"  Text="{Binding VlblTipo}"/>
-            <Label x:Name="xLabel2"  Text="Descrição:"/>
-            <Label x:Name="xLblDescricao"  Text="{Binding VlblDescricao}"/>
-            <Label x:Name="xLabel3"  Text="Data:"/>
-            <Label x:Name="xLblData"/>
-            <Label x:Name="xLabel4" Text="Hora:"/>
-            <Label x:Name="xLblHora"/>
+        <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+            <Label x:Name="xLabel" BackgroundColor="White" Text="Categoria:" VerticalOptions="Start" FontSize="Medium"/>
+            <Label x:Name="xLblTipo" BackgroundColor="White" Text="{Binding VlblTipo}" VerticalOptions="Start" FontSize="Medium"/>
+            <Label x:Name="xLabel2" BackgroundColor="White" Text="Descrição:" VerticalOptions="Start" FontSize="Medium"/>
+            <Label x:Name="xLblDescricao" BackgroundColor="White" Text="{Binding VlblDescricao}" VerticalOptions="Start" FontSize="Medium"/>
+            <Label x:Name="xLabel3" BackgroundColor="White" Text="Data:" VerticalOptions="Start" FontSize="Medium"/>
+            <Label x:Name="xLblData" BackgroundColor="White" VerticalOptions="Start" FontSize="Medium"/>
+            <Label x:Name="xLabel4" BackgroundColor="White" Text="Hora:" VerticalOptions="Start" FontSize="Medium"/>
+            <Label x:Name="xLblHora" BackgroundColor="White" VerticalOptions="Start" FontSize="Medium"/>
+            
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label x:Name="xLabelPositive"  Text="0" BackgroundColor="Green" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" WidthRequest="50" FontSize="Medium"/>
+                <Button x:Name="ButtonPositive" IsVisible="False" Text="Positivo" VerticalOptions="Center" Clicked="ButtonPositive_Clicked"></Button>
+                <Label x:Name="xLabelNegative"  Text="0" BackgroundColor="Red" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" WidthRequest="50" FontSize="Medium"/>
+                <Button x:Name="ButtonNegative" IsVisible="False" Text="Negativo" VerticalOptions="Center" Clicked="ButtonNegative_Clicked"></Button>
+                <Button x:Name="ButtonDelete" IsVisible="False" Text="Remover" VerticalOptions="Center" Clicked="ButtonDelete_Clicked"></Button>
+            </StackLayout>
         </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>

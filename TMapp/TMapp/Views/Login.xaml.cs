@@ -30,6 +30,13 @@ namespace TMapp.Views
             await Navigation.PushAsync(LSignUpPage);
         }
 
+        async void OnConsultaButtonClicked(object seder, EventArgs e)
+        {
+            IncidentFilter LFilter = new IncidentFilter();
+            Navigation.InsertPageBefore(new MapPage(LFilter), this);
+            await Application.Current.MainPage.Navigation.PopAsync();
+        }
+
         async void OnLoginButtonClicked(object sender, EventArgs e)
         {
             var user = new User
@@ -46,9 +53,13 @@ namespace TMapp.Views
             {
                 App.IsUserLoggedIn = true;
                 IncidentFilter LFilter = new IncidentFilter();
-                
+
+                //await Application.Current.MainPage.Navigation.PushAsync(new MapPage(LFilter));
                 Navigation.InsertPageBefore(new MapPage(LFilter), this);
-                await Navigation.PopAsync();
+                //var MapPage = new MapPage(LFilter);
+
+                //Application.Current.MainPage = MapPage;
+                await Application.Current.MainPage.Navigation.PopAsync();
             }
             else
             {
