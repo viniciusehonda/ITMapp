@@ -63,6 +63,9 @@ namespace TMapp.Views
                         if(App.CurrentUser.IdUser == LIncident.IdUser)
                         {
                             ButtonDelete.IsVisible = true;
+                            ButtonDelete.IsEnabled = true;
+                            ButtonEdit.IsVisible = true;
+                            ButtonEdit.IsEnabled = true;
                         }
 
                         ButtonPositive.IsVisible = true;
@@ -84,6 +87,12 @@ namespace TMapp.Views
             }
 
 
+        }
+
+        public void ButtonEdit_Clicked(object sender, EventArgs e)
+        {
+            var LIncidentEdit = new IncidentEdit(LIncident);
+            Navigation.PushModalAsync(LIncidentEdit);
         }
 
         public void ButtonPositive_Clicked(object sender, EventArgs e)
@@ -138,8 +147,10 @@ namespace TMapp.Views
 
             try
             {
-                string url = "https://tmappwebapi20180922043720.azurewebsites.net/api/Incident/" + LIncident.IdIncident;
-                var res = FCliente.DeleteAsync(url);
+                string url = "https://tmappwebapi20180922043720.azurewebsites.net/api/IncidentDelete";
+                var json = JsonConvert.SerializeObject(LIncident.IdIncident);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var res = FCliente.PostAsync(url, content);
                 res.Wait();
 
                 Application.Current.MainPage.Navigation.PopAsync();

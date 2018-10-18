@@ -181,8 +181,10 @@ namespace TMapp.Views
 
             LEnumSelectedCategory = SetCategory();
 
-            //pckType = new Picker();
-            //pckType.IsVisible = true;
+            if (pckCategory.SelectedIndex != -1)
+            {
+                pckCategory.SelectedIndex = -1;
+            }
 
             List<string> LPickerOptions = GetPickerOptions();
 
