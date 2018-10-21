@@ -15,6 +15,9 @@ namespace TMapp.Views
 		public AverageInicdentsReport ()
 		{
 			InitializeComponent ();
+
+            var grid = new Grid();
+            grid.RowDefinitions.Add(new RowDefinition)
 		}
 	}
 }

@@ -224,7 +224,7 @@ namespace TMapp.Views
             }
             if (FSelectedType.Equals("Festa"))
             {
-                FCurrentCategory = FCategories.Where(c => c.CategoryName.Equals("Festa")).FirstOrDefault();
+                FCurrentCategory = FCategories.Where(c => c.CategoryName.Equals("Festa")).FirstOrDefault(); 
             }
             if (FSelectedType.Equals("Feira"))
             {

@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\AverageInicdentsReport.xaml">
+    <EmbeddedResource Update="Views\AverageIncidentsReport.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\FilterModal.xaml">
@@ -62,6 +62,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\AverageIncidentsReport.xaml.cs">
+      <DependentUpon>AverageIncidentsReport.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\SignUp.xaml.cs">
       <DependentUpon>SignUp.xaml</DependentUpon>
     </Compile>
