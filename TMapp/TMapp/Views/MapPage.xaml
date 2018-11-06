@@ -6,6 +6,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Login" Clicked="OnLoginButtonClicked"/>
         <ToolbarItem Text="Filtrar" Clicked="OnFilterButtonClicked" />
+        <ToolbarItem Text="Estatísticas" Clicked="OnStatsButtonClicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid HorizontalOptions="Fill" VerticalOptions="Fill">

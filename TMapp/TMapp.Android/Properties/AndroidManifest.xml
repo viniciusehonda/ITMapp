@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.TMapp" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="27" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="vinicius.TMapp" android:installLocation="internalOnly">
+	<uses-sdk android:minSdkVersion="25" android:targetSdkVersion="27" />
 	<uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -9,7 +9,7 @@
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<application android:label="TMapp.Android">
+	<application android:label="TMapp.Android" android:icon="@mipmap/launcher_foreground">
 		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBmOWXtzpo7p9A3EJGN0hZc3eqn1CCRtd4" />
 	</application>
 </manifest>

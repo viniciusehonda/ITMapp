@@ -24,7 +24,7 @@ namespace TMapp.Views
         {
             InitializeComponent();
 
-            Task FTask;
+            //Task FTask;
             List<Position> FCoordinates;
             FCoordinates = FindCoordinates("");
             Position LPosition = FCoordinates.First();
@@ -67,6 +67,15 @@ namespace TMapp.Views
             var LFilterModal = new FilterModal();
             LTask = Navigation.PushModalAsync(LFilterModal);
             //LTask.Wait();
+            if (LTask.IsCompleted)
+                LTask.Dispose();
+        }
+
+        public void OnStatsButtonClicked(object sender, EventArgs e)
+        {
+            Task LTask;
+            LTask = Navigation.PushModalAsync(new AverageIncidentsReportModal(), true);
+
             if (LTask.IsCompleted)
                 LTask.Dispose();
         }

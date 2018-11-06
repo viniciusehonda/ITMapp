@@ -1,9 +1,9 @@
 C:\Users\honda_qgx8ii8\source\repos\ITMapp\TMapp.Models\bin\Release\netstandard2.0\TMapp.Models.deps.json
 C:\Users\honda_qgx8ii8\source\repos\ITMapp\TMapp.Models\bin\Release\netstandard2.0\TMapp.Models.dll
 C:\Users\honda_qgx8ii8\source\repos\ITMapp\TMapp.Models\bin\Release\netstandard2.0\TMapp.Models.pdb
-C:\Users\honda_qgx8ii8\source\repos\ITMapp\TMapp.Models\obj\Release\netstandard2.0\TMapp.Models.csprojAssemblyReference.cache
 C:\Users\honda_qgx8ii8\source\repos\ITMapp\TMapp.Models\obj\Release\netstandard2.0\TMapp.Models.csproj.CoreCompileInputs.cache
 C:\Users\honda_qgx8ii8\source\repos\ITMapp\TMapp.Models\obj\Release\netstandard2.0\TMapp.Models.AssemblyInfoInputs.cache
 C:\Users\honda_qgx8ii8\source\repos\ITMapp\TMapp.Models\obj\Release\netstandard2.0\TMapp.Models.AssemblyInfo.cs
 C:\Users\honda_qgx8ii8\source\repos\ITMapp\TMapp.Models\obj\Release\netstandard2.0\TMapp.Models.dll
 C:\Users\honda_qgx8ii8\source\repos\ITMapp\TMapp.Models\obj\Release\netstandard2.0\TMapp.Models.pdb
+C:\Users\honda_qgx8ii8\source\repos\ITMapp\TMapp.Models\obj\Release\netstandard2.0\TMapp.Models.csprojAssemblyReference.cache

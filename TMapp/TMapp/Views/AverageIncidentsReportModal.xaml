@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TMapp.Views.AverageIncidentsReportModal">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+
+            <StackLayout Orientation="Horizontal">
+                <Label>Total de ocorrências:</Label>
+                <Label x:Name="xTotal">0</Label>
+            </StackLayout>
+
+            <Label BackgroundColor="red">Violência</Label>
+            <StackLayout Orientation="Horizontal">
+                <Label>Assalto:</Label>
+                <Label x:Name="xTotalAssalto">0</Label>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label>Roubo:</Label>
+                <Label x:Name="xTotalRoubo">0</Label>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label>Furto:</Label>
+                <Label x:Name="xTotalFurto">0</Label>
+            </StackLayout>
+
+            <Label BackgroundColor="Blue">Desastre</Label>
+            <StackLayout Orientation="Horizontal">
+                <Label>Enchente:</Label>
+                <Label x:Name="xTotalEnchente">0</Label>
+            </StackLayout>
+
+            <Label BackgroundColor="Purple">Evento</Label>
+            <StackLayout Orientation="Horizontal">
+                <Label>Festa:</Label>
+                <Label x:Name="xTotalFesta">0</Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label>Feira:</Label>
+                <Label x:Name="xTotalFeira">0</Label>
+            </StackLayout>
+
+            <Label BackgroundColor="Gray">Trânsito</Label>
+            <StackLayout Orientation="Horizontal">
+                <Label>Acidente:</Label>
+                <Label x:Name="xTotalAcidente">0</Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label>Trânsito:</Label>
+                <Label x:Name="xTotalTransito">0</Label>
+            </StackLayout>
+
+            <Label BackgroundColor="Green">Ambiente</Label>
+            <StackLayout Orientation="Horizontal">
+                <Label>Acumulo de Lixo:</Label>
+                <Label x:Name="xTotalAcumulo">0</Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label>Mal Cheiro:</Label>
+                <Label x:Name="xTotalCheiro">0</Label>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
